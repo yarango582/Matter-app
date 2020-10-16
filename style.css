@@ -1,0 +1,19 @@
+#body-register {
+    background-image: url("./imgs/fondo.jpg");
+    background-size: cover;
+}
+
+.container-form-register {
+    width: 30%;
+    margin-left: 35%;
+    background-color: white;
+    padding: 25px;
+    color: black;
+    border-radius: 10px;
+    margin-top: 15%;
+    text-align: center;
+}
+
+.form-group label {
+    text-align: left;
+}
