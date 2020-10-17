@@ -1,3 +1,9 @@
+function authenticated() {
+    const loggedUser = localStorage.getItem('user');
+    if(loggedUser) {
+        window.location.href = "../index.html";
+    }
+}
 document.getElementById('login').addEventListener('submit', getUsers)
 function getUsers() {
     fetch(`https://matter-app.herokuapp.com/api/v1/users`)
@@ -20,3 +26,4 @@ function storage(user) {
     const stringUser = JSON.stringify(user);
     localStorage.setItem('user', stringUser);
 }
+authenticated()
