@@ -1,0 +1,24 @@
+import User from './User.js'
+
+function getUsers() {
+    let getStatus
+    const user = new User()
+    const url = "https://matter-app.herokuapp.com/api/v1/users";
+    const options = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: JSON.stringify(user.addUser())
+    }
+    fetch(url, options)
+    .then( response => {
+        getStatus = response.status
+        return response.json()
+    })
+    .then(() => {
+        if(getStatus === 201) {
+            location.replace('index.html')
+        }
+    })
+}
+
+window.getUsers = getUsers
