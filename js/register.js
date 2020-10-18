@@ -16,7 +16,7 @@ function getUsers() {
     })
     .then(() => {
         if(getStatus === 201) {
-            localStorage.setItem('users', JSON.stringify(user.addUser))
+            localStorage.setItem('users', JSON.stringify(user.addUser()))
             location.replace('index.html')
         }
     })
