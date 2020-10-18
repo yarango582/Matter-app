@@ -1,3 +1,4 @@
+import User from './User.js'
 export default class LoginUser {
     authenticated() {
         const loggedUser = localStorage.getItem('user');
@@ -8,24 +9,14 @@ export default class LoginUser {
         }
     }
     getUsers() {
-        fetch(`https://matter-app.herokuapp.com/api/v1/users`)
-        .then(response => response.json())
-        .then(users => searchUser(users));
-    }
-    searchUser(users) {
-        const dataEmail = document.getElementById('email').value;
-        const user = users.find((user) => {
-            return dataEmail === user.email;
-        })
-        if(user) { // si existe un usuario
-            storage(user);
-            window.location.href = "../index.html";
-        } else {
-            alert('No se encontró un usuario con tus credenciales');
+        const user = new User()
+        const requestUrl = "https://matter-app.herokuapp.com/api/v1/users";
+        const requestOptions = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
         }
-    }
-    storage(user) { 
-        const stringUser = JSON.stringify(user);
-        localStorage.setItem('user', stringUser);
+        fetch(requestUrl, requestOptions)
+        .then(response => response.json())
+        .then(data => user.searchUser(data))
     }
 }
