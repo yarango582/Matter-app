@@ -1,4 +1,3 @@
-import verificarLogin from './authenticated.js';
 import LoginUser from './login.js';
 import RegisterUser from './register.js'
 import Authenticated from './authenticated.js'
