@@ -1,3 +1,6 @@
+
+/****************CSS DE REGISTER/////////////////////////*/
+
 #body-register {
     background-image: url("../imgs/fondo.jpg");
     background-size: cover;
@@ -21,4 +24,32 @@
 }
 .form-group label {
     text-align: left;
+}
+
+/****************CSS DE HOME/////////////////////////////////////////*/
+
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;400;500&display=swap');
+
+#body-home {
+    margin: 0;
+    padding: 0;
+    font-family: 'Sansita Swashed';
+}
+
+.style-navbar {
+    background-color: #10DEAE!important;
+}
+
+.style-links-navbar a {
+    color: white !important;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.style-navbar-container {
+    margin-left: 50%;
+}
+
+.container-body {
+    margin-top: 5%;
 }
