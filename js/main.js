@@ -32,6 +32,7 @@ if(window.location.pathname === '/views/register.html') {
 if(window.location.pathname === '/index.html') {
     const invitated = new Invitated;
     invitated.obtainUserStorage();
+    invitated.getUsers();
 }
 
 // const register = new RegisterUser

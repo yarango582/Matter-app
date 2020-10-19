@@ -14,6 +14,7 @@ export default class User {
         }
         return returnValue
     }
+
     searchUser(users) {
         const dataEmail = document.getElementById('email').value;
         const user = users.find((user) => {
@@ -27,9 +28,26 @@ export default class User {
             alert('No se encontró un usuario con tus credenciales');
         }
     }
+    
     obtainUser(){
         const usersFromStorage = localStorage.getItem('user');
         const user = JSON.parse(usersFromStorage) || [];
         return user;
+    }
+
+    searchUserfeedback(users) {
+        // const dataEmail = document.getElementById('email').value;
+        const dataEmail = "erik@academlo.com";
+
+        const user = users.find((user) => {
+            return dataEmail === user.email;
+        })
+        if(user) { // si existe un usuario
+            
+            return user
+
+        } else {
+            alert('No se encontró un usuario con tus credenciales');
+        }
     }
 }
