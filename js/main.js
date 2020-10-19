@@ -9,10 +9,10 @@ login.authenticated()
 const authenticatedIndex = new Authenticated
 authenticatedIndex.verificarLogin();
 
+
 if(window.location.pathname === '/views/login.html') {
     document.getElementById('login').addEventListener('submit', (event) => {
         event.preventDefault()
-
         login.getUsers()
     })
 }
