@@ -51,5 +51,22 @@
 }
 
 .container-body {
-    margin-top: 5%;
+    margin-top: 4.9%;
+    background-color: rgba(207,207,207,.2);
+}
+
+.container-body-subdivs {
+    display: flex;
+    width: 70%;
+    margin-left: 15%;
+    height: 100vh;
+    
+}
+
+#container-center {    
+    width: 65%;
+}
+
+#container-lateral {
+    width: 35%;
 }
