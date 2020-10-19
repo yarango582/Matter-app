@@ -27,4 +27,9 @@ export default class User {
             alert('No se encontró un usuario con tus credenciales');
         }
     }
+    obtainUser(){
+        const usersFromStorage = localStorage.getItem('user');
+        const user = JSON.parse(usersFromStorage) || [];
+        return user;
+    }
 }

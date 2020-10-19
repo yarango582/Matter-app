@@ -3,6 +3,9 @@ import LoginUser from './login.js';
 import RegisterUser from './register.js'
 import Authenticated from './authenticated.js'
 
+
+import Invitated from './invitated.js'
+
 const login = new LoginUser
 login.authenticated()
 
@@ -24,6 +27,11 @@ if(window.location.pathname === '/views/register.html') {
         const register = new RegisterUser
         register.getUsers()
     })
+}
+
+if(window.location.pathname === '/index.html') {
+    const invitated = new Invitated;
+    invitated.obtainUserStorage();
 }
 
 // const register = new RegisterUser
