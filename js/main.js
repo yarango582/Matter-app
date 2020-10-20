@@ -16,7 +16,7 @@ if(window.location.pathname === '/views/login.html') {
     document.getElementById('login').addEventListener('submit', (event) => {
         event.preventDefault()
 
-        login.getUsers()
+        login.loginUsers()
     })
 }
 
@@ -29,11 +29,10 @@ if(window.location.pathname === '/views/register.html') {
     })
 }
 
-if(window.location.pathname === '/index.html') {
-    const invitated = new Invitated;
-    invitated.obtainUserStorage();
-    invitated.getUsers();
-}
+// if(window.location.pathname === '/index.html') {
+//     const invitated = new Invitated;
+//     invitated.inviteUsers();
+// }
 
 // const register = new RegisterUser
 
