@@ -52,8 +52,8 @@ let x = [
 		updated_at: "2020-10-16T04:48:56.000000Z",
 	},
 ];
+notificade.GetNotificade(x);
 });
-notificade.GetNotificade();
 document.getElementById("start").addEventListener("click", () => {
 	const feedback = new Feedback();
 	feedback.getFeedback();
