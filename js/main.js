@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import LoginUser from './login.js';
-import RegisterUser from './register.js'
-import Authenticated from './authenticated.js'
-
-
-import Invitated from './invitated.js'
-
-const login = new LoginUser
-login.authenticated()
-
-const authenticatedIndex = new Authenticated
-=======
 import verificarLogin from "./authenticated.js";
 import LoginUser from "./login.js";
 import RegisterUser from "./register.js";
@@ -21,20 +8,15 @@ const login = new LoginUser();
 login.authenticated();
 
 const authenticatedIndex = new Authenticated();
->>>>>>> jonathan
+
 authenticatedIndex.verificarLogin();
 
 if (window.location.pathname === "/views/login.html") {
 	document.getElementById("login").addEventListener("submit", (event) => {
 		event.preventDefault();
-
-<<<<<<< HEAD
         login.loginUsers()
     })
-=======
-		login.getUsers();
-	});
->>>>>>> jonathan
+
 }
 
 if (window.location.pathname === "/views/register.html") {

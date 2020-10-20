@@ -14,8 +14,7 @@ export default class Notificades {
     NumberNotificade(x) {
 		const container = document.getElementById("notificade");
 		container.innerHTML += `
-    <a href="#" title="Placeholder link title" class="text-decoration-none">
-
+    <button class="btn btn-primary" type="submit">
     <svg
     width="1.5em"
     height="1.5em"
@@ -37,8 +36,8 @@ export default class Notificades {
     <span>
     ${x}
     </span>
-    </a>
-    </div> `;
+    </div>
+    </button> `;
     }
 }
 class BodyNotificades{
