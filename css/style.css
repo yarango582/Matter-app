@@ -37,17 +37,23 @@
 }
 
 .style-navbar {
-    background-color: #10DEAE!important;
+    background-color: rgb(52, 55, 153)!important;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.style-navbar a img {
+    width: 75px;
 }
 
 .style-links-navbar a {
     color: white !important;
     font-weight: bolder;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .style-navbar-container {
-    margin-left: 50%;
+    
 }
 
 .container-body {
@@ -69,4 +75,12 @@
 
 #container-lateral {
     width: 35%;
+}
+
+.img-nav-bar-left {
+    height: 36px;
+}
+
+.img-nav-bar-right {
+    width: 75%!important;
 }
