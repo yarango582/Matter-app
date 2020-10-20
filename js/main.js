@@ -4,12 +4,16 @@ import RegisterUser from "./register.js";
 import Authenticated from "./authenticated.js";
 import Notificades from "./notificade.js";
 import Feedback from "./Feedback.js";
+import UI from './UI.js';
+
 const login = new LoginUser();
 login.authenticated();
 
 const authenticatedIndex = new Authenticated();
 authenticatedIndex.verificarLogin();
 
+const ui = new UI;
+ui.mostrarMenuProfile();
 
 if (window.location.pathname === "/views/login.html") {
 	document.getElementById("login").addEventListener("submit", (event) => {
