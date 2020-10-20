@@ -1,14 +1,14 @@
+import LoginUser from './login.js';
+import RegisterUser from './register.js'
+import Authenticated from './authenticated.js'
 import Invitated from './invitated.js'
-import LoginUser from "./login.js";
-import RegisterUser from "./register.js";
-import Authenticated from "./authenticated.js";
 import Notificades from "./notificade.js";
 import Feedback from "./Feedback.js";
 
-const login = new LoginUser();
-login.authenticated();
+const login = new LoginUser
+login.authenticated()
 
-const authenticatedIndex = new Authenticated();
+const authenticatedIndex = new Authenticated
 authenticatedIndex.verificarLogin();
 
 if (window.location.pathname === "/views/login.html") {
@@ -17,6 +17,7 @@ if (window.location.pathname === "/views/login.html") {
 
         login.loginUsers()
     })
+
 }
 
 if (window.location.pathname === "/views/register.html") {
