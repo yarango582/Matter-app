@@ -28,8 +28,10 @@ if (window.location.pathname === "/views/register.html") {
 	});
 }
 //notificade
-const notificade = new Notificades();
-notificade.NumberNotificade(7);
+
+document.getElementById("note").addEventListener("click", () => {
+	const notificade = new Notificades();
+	notificade.NumberNotificade(1);
 let x = [
 	{
 		id: 1,
@@ -50,6 +52,7 @@ let x = [
 		updated_at: "2020-10-16T04:48:56.000000Z",
 	},
 ];
+});
 notificade.GetNotificade();
 document.getElementById("start").addEventListener("click", () => {
 	const feedback = new Feedback();

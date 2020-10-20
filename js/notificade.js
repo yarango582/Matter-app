@@ -14,7 +14,7 @@ export default class Notificades {
     NumberNotificade(x) {
 		const container = document.getElementById("notificade");
 		container.innerHTML += `
-    <button class="btn btn-primary" type="submit">
+    <button class="btn btn-primary" id="" type="submit">
     <svg
     width="1.5em"
     height="1.5em"
