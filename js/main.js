@@ -2,6 +2,9 @@ import LoginUser from './login.js';
 import RegisterUser from './register.js'
 import Authenticated from './authenticated.js'
 
+
+import Invitated from './invitated.js'
+
 const login = new LoginUser
 login.authenticated()
 
@@ -12,7 +15,7 @@ if(window.location.pathname === '/views/login.html') {
     document.getElementById('login').addEventListener('submit', (event) => {
         event.preventDefault()
 
-        login.getUsers()
+        login.loginUsers()
     })
 }
 
@@ -24,6 +27,11 @@ if(window.location.pathname === '/views/register.html') {
         register.getUsers()
     })
 }
+
+// if(window.location.pathname === '/index.html') {
+//     const invitated = new Invitated;
+//     invitated.inviteUsers();
+// }
 
 // const register = new RegisterUser
 
