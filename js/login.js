@@ -20,7 +20,6 @@ export default class LoginUser {
             body: JSON.stringify(urlencoded),
             redirect: 'follow'
         }
-
         fetch("http://matter-app.herokuapp.com/api/v1/auth/login", requestOptions)
         .then(response => response.text())
         .then(result => user.checkerUser(result))

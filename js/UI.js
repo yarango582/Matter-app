@@ -1,5 +1,5 @@
 
-class UI{
+class UI {
 
     mostrarMenuProfile(){
 
