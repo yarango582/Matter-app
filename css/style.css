@@ -52,10 +52,6 @@
     font-size: 1.2rem;
 }
 
-.style-navbar-container {
-    
-}
-
 .container-body {
     margin-top: 4.9%;
     background-color: rgba(207,207,207,.2);
@@ -77,12 +73,15 @@
     width: 35%;
 }
 
-.img-nav-bar-left {
-    height: 36px;
+.fas {
+    color: rgb(88, 155, 255)!important;
+}
+.nav-link-left {
+    margin-left: 35px;
 }
 
-.img-nav-bar-right {
-    width: 75%!important;
+.nav-link {
+    margin-right: 15px;
 }
 
 
