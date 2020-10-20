@@ -84,3 +84,20 @@
 .img-nav-bar-right {
     width: 75%!important;
 }
+
+.notificade{
+    position: absolute;
+    top: 17px;
+    right: 12px;
+    background-color: rgb(255, 5, 5);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    line-height: 15px;
+    font-size: 10px;
+    text-align: center;
+    cursor: pointer;
+    }
+    .notificade > span{
+        color :white
+    }
