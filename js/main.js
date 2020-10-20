@@ -12,8 +12,6 @@ login.authenticated();
 const authenticatedIndex = new Authenticated();
 authenticatedIndex.verificarLogin();
 
-const ui = new UI;
-ui.mostrarMenuProfile();
 
 if (window.location.pathname === "/views/login.html") {
 	document.getElementById("login").addEventListener("submit", (event) => {
@@ -32,6 +30,19 @@ if (window.location.pathname === "/views/register.html") {
 	});
 }
 
+if (window.location.pathname === "/index.html") { //validamos ruta index
+
+		const ui = new UI;
+		ui.mostrarMenuProfile(); //controlador de vistas
+		ui.mostrarMenuCambiarContraseña() //controlador de vistas
+
+		document.getElementById('logout').addEventListener('click', (go) =>{ //evento para ancla
+			
+			authenticatedIndex.finalizarSesion() //Re-utilizamos la clase agregando nuevos metos
+			window.location.reload(); //recargamos para finalizar sesion
+		})
+
+}
 
 // notificade.GetNotificade();
 // document.getElementById("start").addEventListener("click", () => {

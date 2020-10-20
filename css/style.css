@@ -26,6 +26,7 @@
     text-align: left;
 }
 
+
 /****************CSS DE HOME/////////////////////////////////////////*/
 
 @import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;400;500&display=swap');
@@ -86,6 +87,7 @@
 
 .profile-container{
     margin-top: 0;
+
 }
 
 
@@ -94,6 +96,7 @@
     margin-right: 8%;
     border-radius: 3%;
     display: none;
+    position: absolute;
 }
 
 .profile-list-menu{
@@ -109,6 +112,10 @@
 
 .profile-list-menu-item > a:hover {
     color:rgb(242, 166, 69);
+}
+
+.row-form-password{
+    display: none;
 }
 
 /* notificaciones */

@@ -48,27 +48,52 @@
     </nav>
     <!-- Menu desplegable para profile -->
     <nav class="navbar">
-        <div class="container profile-container justify-content-end">
+        <div class="container profile-container justify-content-end mt-5">
             <div class="row profile-row" id="profile-row">
                 <div class="col-md-12">
                     <ul class="profile-list-menu">
                         <li class="profile-list-menu-item">
-                            <a href="#" title="settings">Item</a>
+                            <a href="#" title="item" type="button">Item</a>
                         </li>
                         <li class="profile-list-menu-item">
-                            <a href="#" title="settings">Item</a>
+                            <a href="#" title="item" type="button">Item</a>
                         </li>
                         <li class="profile-list-menu-item">
-                            <a href="#" title="settings">Ajustes</a>
+                            <a href="#" title="change password" type="button" id="change-password">Cambiar Contraseña</a>
                         </li>
                         <li class="profile-list-menu-item">
-                            <a href="#" title="logout">Cerrar Sesión</a>
+                            <a href="#" title="logout" type="button" id="logout">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
+    <!-- Cambio de contraseña -->
+    <div class="container mt-5">
+        <div class="row text-center row-form-password" id="row-form-password">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-title mt-3">
+                        <h3>Cambiar contraseña</h3>
+                    </div>
+                    <div class="card-body">
+                        <form onsubmit="event.preventDefault()" action="/" id="form-change-password">
+                            <div class="form-group">
+                              <label for="password-1">Ingrese la contraseña</label>
+                              <input type="password" class="form-control" id="password-1" placeholder="*****">
+                            </div>
+                            <div class="form-group">
+                                <label for="password-2">Confirme la contraseña</label>
+                                <input type="password" class="form-control" id="password-2" placeholder="*****">
+                              </div>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer>
         <script type="module" src="./js/main.js"></script>
     </footer>
