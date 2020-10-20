@@ -4,6 +4,9 @@ import Authenticated from './authenticated.js'
 import Invitated from './invitated.js'
 import Notificades from "./notificade.js";
 import Feedback from "./Feedback.js";
+import UI from "./UI.js"
+
+const ui = new UI
 
 const login = new LoginUser
 login.authenticated()
@@ -30,15 +33,15 @@ if (window.location.pathname === "/views/register.html") {
 }
 //notificade
 
-const notificade = new Notificades
-// notificade.GetNotificade();
-document.getElementById("start").addEventListener("click", () => {
-	const feedback = new Feedback();
-	feedback.getFeedback();
-});
-document.getElementById("decline").addEventListener("click", () => {
-	storage.removeItem(keyName);
-});
+// const notificade = new Notificades
+// // notificade.GetNotificade();
+// document.getElementById("start").addEventListener("click", () => {
+// 	const feedback = new Feedback();
+// 	feedback.getFeedback();
+// });
+// document.getElementById("decline").addEventListener("click", () => {
+// 	storage.removeItem(keyName);
+// });
 
 
 
