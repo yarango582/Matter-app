@@ -9,13 +9,11 @@
     <title>Matter App Squad 8 y Felipe</title>
 
 </head>
-<body id="body-home">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light style-navbar fixed-top">
-        
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light style-navbar">
         <a class="navbar-brand" href="#">
             <img src="https://i.imgur.com/zg0WCUM.png" class="d-inline-block align-top" alt=":(" loading="lazy">            
         </a>
-
         <div class="collapse navbar-collapse style-navbar-container" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item active style-links-navbar">
@@ -35,29 +33,87 @@
               </li>
             </ul>
         </div>
-
         <div>
             <ul class="navbar-nav">
-                
                 <li class="nav-item active style-links-navbar">
                     <a class="nav-link" href="#">
                         <i class="fas fa-bell"></i>
                     </a>
                 </li>
-
                 <li class="nav-item active style-links-navbar">
-                    <a class="nav-link" href="#">
+                    <a id="button-profile" type="button" class="nav-link" href="#">
                         <i class="fas fa-user-circle"></i>
                     </a>
                 </li>
-
             </ul>
         </div>
-
     </nav>
-
-    
-
+    <!-- Menu desplegable para profile -->
+    <nav class="navbar">
+        <div class="container profile-container justify-content-end mt-3 pt-3">
+            <div class="row profile-row" id="profile-row">
+                <div class="col-md-12">
+                    <ul class="profile-list-menu">
+                        <li class="profile-list-menu-item">
+                            <a href="#" title="item" type="button" id="invite">Invitar</a>
+                        </li>
+                        <li class="profile-list-menu-item">
+                            <a href="#" title="change password" type="button" id="change-password">Cambiar Contraseña</a>
+                        </li>
+                        <li class="profile-list-menu-item">
+                            <a href="#" title="logout" type="button" id="logout">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Cambio de contraseña -->
+    <div class="container mt-5" id="container-change-password">
+        <div class="row text-center row-form-password" id="row-form-password">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-title mt-3">
+                        <h3>Cambiar contraseña</h3>
+                    </div>
+                    <div class="card-body">
+                        <form onsubmit="event.preventDefault()" action="/" id="form-change-password">
+                            <div class="form-group">
+                              <label for="password-1">Ingrese la contraseña</label>
+                              <input type="password" class="form-control" id="password-1" placeholder="*****">
+                            </div>
+                            <div class="form-group">
+                                <label for="password-2">Confirme la contraseña</label>
+                                <input type="password" class="form-control" id="password-2" placeholder="*****">
+                              </div>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Invitar para feedback -->
+    <div class="container mt-5" id="container-invite-feedback">
+        <div class="row text-center row-form-invite-feedback" id="row-form-invite-feedback">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-title mt-3">
+                        <h3>Invita a que te den retroalimentación</h3>
+                    </div>
+                    <div class="card-body">
+                        <form onsubmit="event.preventDefault()" action="/" id="form-invite-feedback">
+                            <div class="form-group">
+                                <label for="email-invite-feed"></label>
+                                <input type="email" class="form-control" id="email-invite-feed" placeholder="@correo.com">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Invitar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer>
         <script type="module" src="./js/main.js"></script>
     </footer>

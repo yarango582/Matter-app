@@ -7,4 +7,7 @@ export default class Authenticated {
             }
         }
     }
+    finalizarSesion(){
+        localStorage.clear();
+    }
 }
