@@ -27,16 +27,12 @@ if (window.location.pathname === "/views/register.html") {
 	});
 }
 //notificade
-//const notificade = new Notificades();
-//
-//notificade.GetNotificade();
-//document.getElementById("start").addEventListener("click", () => {
-//	const feedback = new Feedback();
-//	feedback.getFeedback();
-//});
-//document.getElementById("decline").addEventListener("click", () => {
-//	storage.removeItem(keyName);
-//});
+document.getElementById("note").addEventListener("click",(event)=>{
+	event.preventDefault();
+	const notificade = new Notificades();
+	notificade.bodyDiv();
+});
+
 
 // if(window.location.pathname === '/index.html') {
 //     const invitated = new Invitated;
