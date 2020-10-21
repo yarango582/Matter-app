@@ -51,7 +51,7 @@ export default class Notificades {
 class GetNotificades{
     GetNotificade(id){
         const printi = new PrintNotificade()
-        const requestUrl = `http://matter-app.herokuapp.com/api/v1/users/1/feedback-invitations`;
+        const requestUrl = `http://matter-app.herokuapp.com/api/v1/users/${id}/feedback-invitations`;
         const requestOptions = {
             method: 'GET',
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
