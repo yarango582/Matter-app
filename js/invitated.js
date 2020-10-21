@@ -4,7 +4,7 @@ export default class Invitated {
         const User = new obtainUser;
         let userStorage = User.obtainUser();
         userStorage = JSON.parse(userStorage);
-        const dataEmail = 'erik@academlo.com';
+        const dataEmail = document.getElementById('email-invite-feed').value;
         const urlencoded = {email: dataEmail,}
         var requestOptions = {
             method: 'POST',
@@ -14,7 +14,10 @@ export default class Invitated {
           };  
           fetch(`http://matter-app.herokuapp.com/api/v1/users/${userStorage.id}/invite`, requestOptions)
             .then(response => response.text())
-            .then(result => console.log(result))
+            .then(result => {
+                            console.log(result);
+                            document.getElementById("form-invite-feedback").reset();
+                            alert("invitacion enviada con exito.")})
             .catch(error => console.log('error', error));
     }
 }

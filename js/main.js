@@ -6,6 +6,8 @@ import Notificades from "./notificade.js";
 import Feedback from "./Feedback.js";
 import UI from './UI.js';
 import newPassword from './newPassword.js';
+import Invitated from './invitated.js';
+
 
 const login = new LoginUser();
 login.authenticated();
@@ -45,6 +47,13 @@ if (window.location.pathname === "/index.html") { //validamos ruta index
 			event.preventDefault();
 			const changePassword = new newPassword;
 			changePassword.newPassword();
+		})
+
+		document.getElementById('form-invite-feedback').addEventListener('submit', (event) =>{ 
+			//evento para ancla
+			event.preventDefault();
+			const invited = new Invitated;
+			invited.inviteUsers();
 		})
 }
 
