@@ -124,11 +124,19 @@
 }
 
 /* notificaciones */
-
+.note {
+    background: none;
+    border: none; 
+    padding: 0; 
+    height: 100%; 
+}
+.mt-6{
+    margin-top: 7rem !important;
+}
 .notificade{
     position: absolute;
-    top: 17px;
-    right: 12px;
+    top: 20px;
+    right: 13rem;
     background-color: rgb(255, 5, 5);
     width: 15px;
     height: 15px;
@@ -137,7 +145,42 @@
     font-size: 10px;
     text-align: center;
     cursor: pointer;
-    }
-    .notificade > span{
-        color :white
-    }
+}
+.notificade > span{
+    color :white
+}
+#form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+#form p {
+    text-align: center;
+}
+
+#form label {
+    font-size: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    color: grey;
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+    color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+    color: orange;
+}
