@@ -86,5 +86,6 @@ document.getElementById("note").addEventListener("click",(event)=>{
 document.getElementById("peers").addEventListener("click",(event)=>{
 	event.preventDefault();
 	const peers = new Peers();
-	peers.Entro();
+	//peers.Entro();
+	peers.first()
 });
