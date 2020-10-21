@@ -5,28 +5,20 @@ export default class Notificades {
         // const get=new GetNotificades()
         //ContainerMain.innerHTML = "";
         ContainerMain.innerHTML += `
-    <div class="container mt-6">
-        <div id="feedback" class="row">
-            <div id="left" class="col-md-7">
+            <div class="container mt-6">
+                <div id="feedback" class="row">
+                    <div id="left" class="col-md-7">
+                    </div>
+                    <div id="" class="col-md-4">
+                    </div>
+                </div>
             </div>
-            <div id="" class="col-md-4">
-            </div>
-        </div>
-    </div>
             `;
             let y= JSON.parse(`${localStorage.getItem('user')}`);
             let z= JSON.parse(`${y}`)
             console.log(z)
-
-            // const printi = new PrintNotificade()
-            const requestUrl = `http://matter-app.herokuapp.com/api/v1/users/${z.id}/feedback-invitations`;
-            const requestOptions = {
-                method: 'GET',
-                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-            }
-            fetch(requestUrl, requestOptions)
-            .then(response => response.json())
-            .then(data => console.log(data));
+            this.GetNotificade(z.id)
+            
     }
     NumberNotificade(x) {
 		const container = document.getElementById("notificade");
@@ -57,17 +49,17 @@ export default class Notificades {
     </button> `;
     }
 
-    // GetNotificade(id){
-    //     const printi = new PrintNotificade()
-    //     const requestUrl = `http://matter-app.herokuapp.com/api/v1/users/${id}/feedback-invitations`;
-    //     const requestOptions = {
-    //         method: 'GET',
-    //         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-    //     }
-    //     fetch(requestUrl, requestOptions)
-    //     .then(response => response.json())
-    //     .then(data => printi.printiNotificade(data));
-    // }
+    GetNotificade(id){
+        // const printi = new PrintNotificade()
+        const requestUrl = `http://matter-app.herokuapp.com/api/v1/users/${id}/feedback-invitations`;
+        const requestOptions = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        }
+        fetch(requestUrl, requestOptions)
+        .then(response => response.json())
+        .then(data => this.printiNotificade(data));
+    }
     GetName(id){
         const name=new Info()
         const requestUrl = `https://matter-app.herokuapp.com/api/v1/users/${id}`;
@@ -104,8 +96,8 @@ export default class Notificades {
         return y
     }
     listNotificade(invitations){
-        const date=new Info();
-        const name=new GetNotificades
+        // const date=new Info();
+        // const name=new GetNotificades
         const header=document.getElementById("header-notificade")
             header.innerHTML="Awaiting Feedback"
         const notificade=document.getElementById("cont-notificade")
@@ -147,23 +139,23 @@ export default class Notificades {
         `
     }
     printiNotificade(invitations) {
-        const body=new BodyNotificades()
-        const list=new ListNotificade()
+        // const body=new BodyNotificades()
+        // const list=new ListNotificade()
         if (invitations.length) {
-            body.bodyNotificade()
-            list.listNotificade(invitations)
+            this.bodyNotificade()
+            this.listNotificade(invitations)
             document.getElementById("start").addEventListener("click", (event) => {
                 event.preventDefault();
-                const feedback = new Feedback();
-                feedback.getFeedback();
+                // const feedback = new Feedback();
+                this.getFeedback();
             });
             document.getElementById("decline").addEventListener("click", (event) => {
                 event.preventDefault();
                 storage.removeItem(keyName);
             });
         } else {
-            body.bodyNotificade()
-            list.listnone()
+            this.bodyNotificade()
+            this.listnone()
         }
 
     }
