@@ -17,7 +17,16 @@ export default class Notificades {
             let y= JSON.parse(`${localStorage.getItem('user')}`);
             let z= JSON.parse(`${y}`)
             console.log(z)
-        GetNotificade(z.id)
+
+            // const printi = new PrintNotificade()
+            const requestUrl = `http://matter-app.herokuapp.com/api/v1/users/${z.id}/feedback-invitations`;
+            const requestOptions = {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            }
+            fetch(requestUrl, requestOptions)
+            .then(response => response.json())
+            .then(data => console.log(data));
     }
     NumberNotificade(x) {
 		const container = document.getElementById("notificade");
@@ -48,17 +57,17 @@ export default class Notificades {
     </button> `;
     }
 
-    GetNotificade(id){
-        const printi = new PrintNotificade()
-        const requestUrl = `http://matter-app.herokuapp.com/api/v1/users/${id}/feedback-invitations`;
-        const requestOptions = {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-        }
-        fetch(requestUrl, requestOptions)
-        .then(response => response.json())
-        .then(data => printi.printiNotificade(data));
-    }
+    // GetNotificade(id){
+    //     const printi = new PrintNotificade()
+    //     const requestUrl = `http://matter-app.herokuapp.com/api/v1/users/${id}/feedback-invitations`;
+    //     const requestOptions = {
+    //         method: 'GET',
+    //         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    //     }
+    //     fetch(requestUrl, requestOptions)
+    //     .then(response => response.json())
+    //     .then(data => printi.printiNotificade(data));
+    // }
     GetName(id){
         const name=new Info()
         const requestUrl = `https://matter-app.herokuapp.com/api/v1/users/${id}`;
@@ -70,11 +79,6 @@ export default class Notificades {
         .then(response => response.json())
         .then(data => name.PrintName(data.name));
     }
-}
-// class GetNotificades{
-    
-// }
-class BodyNotificades{
     bodyNotificade(){
         const ContainerMain = document.getElementById("left");
         //ContainerMain.innerHTML = "";
@@ -88,8 +92,6 @@ class BodyNotificades{
             </div>
             `;
     }
-}
-class Info{
     PrintDate(x){
         let y=""
         for (let i = 0; i < 10; i++) {
@@ -101,8 +103,6 @@ class Info{
         }
         return y
     }
-}
-class ListNotificade{
     listNotificade(invitations){
         const date=new Info();
         const name=new GetNotificades
@@ -146,8 +146,6 @@ class ListNotificade{
         </div>
         `
     }
-}
-class PrintNotificade{
     printiNotificade(invitations) {
         const body=new BodyNotificades()
         const list=new ListNotificade()
@@ -170,3 +168,102 @@ class PrintNotificade{
 
     }
 }
+// class GetNotificades{
+    
+// }
+// class BodyNotificades{
+//     bodyNotificade(){
+//         const ContainerMain = document.getElementById("left");
+//         //ContainerMain.innerHTML = "";
+//         ContainerMain.innerHTML += `
+//         <div class="card">
+//         <div id="header-notificade" class="card-header">
+            
+//             </div>
+//             <div id="cont-notificade" class="card-body">
+//             </div>
+//             </div>
+//             `;
+//     }
+// }
+// class Info{
+//     PrintDate(x){
+//         let y=""
+//         for (let i = 0; i < 10; i++) {
+//             y+=x[i]
+//         }
+//         y+="</br> hrs:"
+//         for (let i = 11; i < 19; i++) {
+//             y+=x[i]
+//         }
+//         return y
+//     }
+// }
+// class ListNotificade{
+//     listNotificade(invitations){
+//         const date=new Info();
+//         const name=new GetNotificades
+//         const header=document.getElementById("header-notificade")
+//             header.innerHTML="Awaiting Feedback"
+//         const notificade=document.getElementById("cont-notificade")
+//         invitations.forEach((invitation) => {
+//             notificade.innerHTML+=`
+//         <div class="row">
+//         <div class="col-md-3">
+//         <img src="" alt="" srcset="${name.GetName(invitation.user_id)}">
+//         </div>
+//         <div class="col-md">
+//         <blockquote class="blockquote mb-0">
+//             <span color="black" font-size="inherit" font-weight="400" >${name.GetName(invitation.user_id)}</span>
+//             <p>would like to hear your feedback.</br>${date.PrintDate(invitation.created_at)} </p>
+//         </blockquote>
+//         </div>
+//         <div class="col-md-2">
+//             <div class="btn-group-vertical" role="group" aria-label="Basic example">
+//                 <button id="start" type="button" class="btn btn btn-primary">Start</button>
+//                 <button id="decline" type="button" class="btn btn-outline-primary">Decline</button>
+//             </div>
+//         </div>
+//         `
+//         })
+//     }
+//     listnone(){
+//         const header=document.getElementById("header-notificade")
+//         header.innerHTML="Notifications"
+//         const notificade=document.getElementById("cont-notificade")
+//         notificade.innerHTML=`
+//         <div>
+//             <span>
+//             Oh, notifications! <br/>(You don’t have any yet.)
+//             </span>
+// 	        <p>
+// 	        	Connect with your peers, ask for feedback, and we’ll let you know about all
+// 	        	the things that matter.
+// 	        </p>
+//         </div>
+//         `
+//     }
+// }
+// class PrintNotificade{
+//     printiNotificade(invitations) {
+//         const body=new BodyNotificades()
+//         const list=new ListNotificade()
+//         if (invitations.length) {
+//             body.bodyNotificade()
+//             list.listNotificade(invitations)
+//             document.getElementById("start").addEventListener("click", (event) => {
+//                 event.preventDefault();
+//                 const feedback = new Feedback();
+//                 feedback.getFeedback();
+//             });
+//             document.getElementById("decline").addEventListener("click", (event) => {
+//                 event.preventDefault();
+//                 storage.removeItem(keyName);
+//             });
+//         } else {
+//             body.bodyNotificade()
+//             list.listnone()
+//         }
+
+//     }
+// }
