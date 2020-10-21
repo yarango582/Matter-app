@@ -6,9 +6,11 @@ export default class User {
     }
 
     addUser() {
+        const getName = document.getElementById('name')
         const getEmail = document.getElementById('email')
         const getPassword = document.getElementById('password')
         let returnValue = {
+            name: getName.value,
             email: getEmail.value,
             password: getPassword.value
         }
