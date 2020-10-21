@@ -1,7 +1,5 @@
 export default class Peers {
-    
-    datosNombre = [];
-    datosEmail = [];
+
 
     // Entro() {
     //     //console.log("entramos papu");
