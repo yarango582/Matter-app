@@ -18,7 +18,7 @@ export default class ChangePassword {
             fetch(`http://matter-app.herokuapp.com/api/v1/users/${userStorage.id}`, requestOptions)
             .then(response => response.text())
             .then(result => {console.log(result)
-                            alert("contraseña modidicada con exito!")})
+                            alert("contraseña modificada con exito!")})
             .catch(error => console.log('error', error));
         }else {
             alert("las contraseñas no coinciden");

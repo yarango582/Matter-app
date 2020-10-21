@@ -118,6 +118,10 @@
     display: none;
 }
 
+.row-form-invite-feedback{
+    display: none;
+}
+
 /* notificaciones */
 
 .notificade{
