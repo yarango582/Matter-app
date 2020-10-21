@@ -1,4 +1,4 @@
-import User from './User.js'
+import checkerUser from './User.js'
 export default class LoginUser {
     authenticated() {
         const loggedUser = localStorage.getItem('user');
@@ -8,15 +8,22 @@ export default class LoginUser {
             }
         }
     }
-    getUsers() {
-        const user = new User()
-        const requestUrl = "https://matter-app.herokuapp.com/api/v1/users";
+    loginUsers() {
+        const dataEmail = document.getElementById('email').value;
+        const dataPassword = document.getElementById('password').value;
+        const urlencoded = {email: dataEmail,
+                            password: dataPassword }
+        const user = new checkerUser();
         const requestOptions = {
-            method: 'GET',
+            method: 'POST',
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            body: JSON.stringify(urlencoded),
+            redirect: 'follow'
         }
-        fetch(requestUrl, requestOptions)
-        .then(response => response.json())
-        .then(data => user.searchUser(data))
+
+        fetch("http://matter-app.herokuapp.com/api/v1/auth/login", requestOptions)
+        .then(response => response.text())
+        .then(result => user.checkerUser(result))
+        .catch(error => console.log('error', error));
     }
 }

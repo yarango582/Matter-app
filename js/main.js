@@ -14,8 +14,8 @@ if (window.location.pathname === "/views/login.html") {
 	document.getElementById("login").addEventListener("submit", (event) => {
 		event.preventDefault();
 
-		login.getUsers();
-	});
+        login.loginUsers()
+    })
 }
 
 if (window.location.pathname === "/views/register.html") {
@@ -27,18 +27,17 @@ if (window.location.pathname === "/views/register.html") {
 	});
 }
 //notificade
-
-
-// notificade.GetNotificade();
-document.getElementById("start").addEventListener("click", () => {
-	const feedback = new Feedback();
-	feedback.getFeedback();
-});
-document.getElementById("decline").addEventListener("click", () => {
-	storage.removeItem(keyName);
+document.getElementById("note").addEventListener("click",(event)=>{
+	event.preventDefault();
+	const notificade = new Notificades();
+	notificade.bodyDiv();
 });
 
 
+// if(window.location.pathname === '/index.html') {
+//     const invitated = new Invitated;
+//     invitated.inviteUsers();
+// }
 
 // const register = new RegisterUser
 

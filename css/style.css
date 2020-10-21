@@ -37,17 +37,23 @@
 }
 
 .style-navbar {
-    background-color: #10DEAE!important;
+    background-color: rgb(52, 55, 153)!important;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.style-navbar a img {
+    width: 75px;
 }
 
 .style-links-navbar a {
     color: white !important;
     font-weight: bolder;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .style-navbar-container {
-    margin-left: 50%;
+    
 }
 
 .container-body {
@@ -69,4 +75,75 @@
 
 #container-lateral {
     width: 35%;
+}
+
+.img-nav-bar-left {
+    height: 36px;
+}
+
+.img-nav-bar-right {
+    width: 75%!important;
+}
+
+
+/* notificaciones */
+.note {
+    background: none;
+    border: none; 
+    padding: 0; 
+    height: 100%; 
+}
+.mt-6{
+    margin-top: 7rem !important;
+}
+.notificade{
+    position: absolute;
+    top: 20px;
+    right: 13rem;
+    background-color: rgb(255, 5, 5);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    line-height: 15px;
+    font-size: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+.notificade > span{
+    color :white
+}
+#form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+#form p {
+    text-align: center;
+}
+
+#form label {
+    font-size: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    color: grey;
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+    color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+    color: orange;
 }

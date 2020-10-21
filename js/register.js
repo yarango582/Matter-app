@@ -19,6 +19,8 @@ export default class RegisterUser {
                 localStorage.setItem('users', JSON.stringify(urlencoded.addUser()))
                 console.log(urlencoded.addUser())
                 location.replace('../index.html')
+            } else if(getStatus === 422) {
+                alert('Este usuario ya esta registrado')
             }
         })
     }
