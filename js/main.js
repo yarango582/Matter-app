@@ -1,7 +1,5 @@
-import RegisterUser from "./register.js";
 import User from './User.js'
 import Authenticated from "./authenticated.js";
-import Skills from "./evaluate-skills.js";
 import UI from './UI.js';
 import Feedback from './feedback.js'
 
@@ -27,8 +25,7 @@ if (window.location.pathname === "/views/register.html") {
 	document.getElementById("register").addEventListener("submit", (event) => {
 		event.preventDefault();
 
-		const register = new RegisterUser();
-		register.getUsers();
+		authenticated.getUsers();
 	});
 }
 if (window.location.pathname === "/index.html" || window.location.pathname === '/') { //validamos ruta index
@@ -73,7 +70,5 @@ document.getElementById("note").addEventListener("click",(event)=>{
 //************************** PEERS *************************************/
 document.getElementById("peers").addEventListener("click",(event)=>{
 	event.preventDefault();
-	// const peers = new Peers();
-	//peers.Entro();
 	feedback.first()
 });
