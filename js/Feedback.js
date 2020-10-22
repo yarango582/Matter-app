@@ -1,5 +1,9 @@
 export default class Feedback {
-    getFeedback(){
+    constructor(invitationId) {
+        this.invitationId = invitationId
+    }
+    getFeedback(id){
+        this.invitationId = id
         const requestUrl = "https://matter-app.herokuapp.com/api/v1/skills";
         const requestOptions = {
             method: 'GET',
@@ -29,7 +33,7 @@ export default class Feedback {
                                 <label for="radio3-${skill.id}">★</label>
                                 <input id="radio4-${skill.id}" type="radio" name="${skill.name}" value="2">
                                 <label for="radio4-${skill.id}">★</label>
-                                <input id="radio5-${skill.id}" type="radio" name="${skill.name}" value="1">
+                                <input id="radio5-${skill.id}" type="radio" name="${skill.name}" value="1" checked>
                                 <label for="radio5-${skill.id}">★</label>
                                 </p>
                             </form>
@@ -57,24 +61,23 @@ export default class Feedback {
                     console.log(idSkill)
                     score=chek.value
                     console.log(z,score)
-                    //this.upPost(,idSkill,score)
+                    this.upPost(this.invitationId, idSkill, score)
                 }
             });
             
         });
     }
-    upPost(invitate,skill,score){
-        let myHeaders = new Headers();
-        myHeaders.append("Accept", "application/json");
-        let urlencoded = new URLSearchParams();
-        urlencoded.append("score", `${score}`);
+    upPost(invitate, skill, score){
+        const requestUrl = `https://matter-app.herokuapp.com/api/v1/invitations/${invitate}/skills/${skill}`
         let requestOptions = {
             method: 'POST',
-            headers: myHeaders,
-            body: urlencoded,
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            body: JSON.stringify({
+                score: score
+            }),
             redirect: 'follow'
         };
-    fetch(`http://localhost:8000/api/v1/invitations/${invitate}/skills/${skill}`, requestOptions)
+    fetch(requestUrl, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));

@@ -1,5 +1,10 @@
 import Feedback from "./Feedback.js";
 export default class Notificades {
+
+	constructor(idInvitation) {
+		this.idInvitation = idInvitation
+	}
+
 	bodyDiv() {
 		const ContainerMain = document.getElementById("body-home");
         ContainerMain.innerHTML = ``
@@ -107,6 +112,8 @@ export default class Notificades {
 		
     }
 	listNotificade(invitations) {
+		// this.idInvitation = invitations
+		// console.log(this.idInvitation)
 		const header = document.getElementById("header-notificade");
 		header.innerHTML = "Awaiting Feedback";
 		const notificade = document.getElementById("cont-notificade");
@@ -121,28 +128,37 @@ export default class Notificades {
         </div>
         <div class="col-md-2">
             <div class="btn-group-vertical" role="group" aria-label="Basic example">
-				<button id="start" type="button" class="btn btn btn-primary"  onclick="${4}">Start</button>
+				<button id="start ${invitation.id}" type="button" class="btn btn btn-primary">Start</button>
                 <button id="decline" type="button" class="btn btn-outline-primary">Decline</button>
             </div>
         </div>
 		`;
-		this.GetName(invitation.user_id)
+
+		// this.GetName(invitation.user_id)
 		
 		});
+
+		invitations.forEach((invitation) => {
+			document.getElementById(`start ${invitation.id}`).addEventListener("click", (event) => {
+				event.preventDefault();
+				const feedback = new Feedback();
+				feedback.getFeedback(invitation.id);
+			});
+		})
 	}
 	printiNotificade(invitations) {
 		if (invitations.length) {
 			this.bodyNotificade();
 			this.listNotificade(invitations);
-			document.getElementById("start").addEventListener("click", (event) => {
-				event.preventDefault();
-				const feedback = new Feedback();
-				feedback.getFeedback();
-			});
-			document.getElementById("decline").addEventListener("click", (event) => {
-				event.preventDefault();
-				storage.removeItem(keyName);
-			});
+			// document.getElementById("start").addEventListener("click", (event) => {
+			// 	event.preventDefault();
+			// 	const feedback = new Feedback();
+			// 	feedback.getFeedback();
+			// });
+			// document.getElementById("decline").addEventListener("click", (event) => {
+			// 	event.preventDefault();
+			// 	storage.removeItem(keyName);
+			// });
 		} else {
 			this.bodyNotificade();
 			this.listnone();
