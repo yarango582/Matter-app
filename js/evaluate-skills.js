@@ -54,6 +54,7 @@ export default class Skills {
         let idSkill
         let z
         let score
+        let contador = 0
         x.forEach(skill => {
             idSkill=skill.id
             z =document.getElementsByName(`${skill.name}`)
@@ -63,6 +64,10 @@ export default class Skills {
                     score=chek.value
                     console.log(z,score)
                     this.upPost(this.invitationId, idSkill, score)
+                    contador++
+                    if(contador === 3) {
+                        alert('Feedback Calificado')
+                    }
                 }
             });
             
@@ -82,7 +87,6 @@ export default class Skills {
         .then(response => response.text())
         .then(result => {
             console.log(result)
-            alert('Feedback Calificado')
             window.location.href = "/";
         })
         .catch(error => console.log('error', error));
