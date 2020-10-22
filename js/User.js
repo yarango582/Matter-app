@@ -19,7 +19,7 @@ export default class User {
 
     checkerUser(user) {
         if(user !== 'Unauthorized') { // si existe un usuario
-            const stringUser = JSON.stringify(user);
+            const stringUser = user;
             localStorage.setItem('user', stringUser);
             window.location.href = "../index.html";
         } else {

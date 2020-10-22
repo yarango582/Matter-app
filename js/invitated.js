@@ -3,7 +3,7 @@ export default class Invitated {
     inviteUsers() {
         const User = new obtainUser;
         let userStorage = User.obtainUser();
-        userStorage = JSON.parse(userStorage);
+        // userStorage = JSON.parse(userStorage);
         const dataEmail = document.getElementById('email-invite-feed').value;
         const urlencoded = {email: dataEmail,}
         var requestOptions = {
