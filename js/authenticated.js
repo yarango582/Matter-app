@@ -59,7 +59,7 @@ export default class Authenticated {
             body: JSON.stringify(urlencoded),
             redirect: 'follow'
         }
-        fetch("http://matter-app.herokuapp.com/api/v1/auth/login", requestOptions)
+        fetch("https://matter-app.herokuapp.com/api/v1/auth/login", requestOptions)
         .then(response => response.text())
         .then(result => user.checkerUser(result))
         .catch(error => console.log('error', error));

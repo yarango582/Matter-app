@@ -6,6 +6,37 @@ export default class Feedback {
         this.idInvitation = idInvitation
         this.nameUser = nameUser
     }
+
+    containerInviteUsers() {
+        const container = document.getElementById('feedback')
+        container.innerHTML = `<div class="container mt-5" id="container-invite-feedback">
+                                    <div class="row text-center row-form-invite-feedback" id="row-form-invite-feedback">
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-title mt-3">
+                                                    <h3>Invita a que te den retroalimentación</h3>
+                                                </div>
+                                                <div class="card-body">
+                                                    <form onsubmit="event.preventDefault()" action="/" id="form-invite-feedback">
+                                                        <div class="form-group">
+                                                            <label for="email-invite-feed"></label>
+                                                            <input type="email" class="form-control" id="email-invite-feed" placeholder="@correo.com">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">Invitar</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`
+        console.log(container)
+
+        document.getElementById('form-invite-feedback').addEventListener('submit', (event) =>{ 
+            //evento para ancla
+            event.preventDefault();
+            this.inviteUsers();
+        })
+    }
     
     inviteUsers() {
         const User = new obtainUser;
@@ -19,7 +50,7 @@ export default class Feedback {
             body: JSON.stringify(urlencoded),
             redirect: 'follow'
           };  
-          fetch(`http://matter-app.herokuapp.com/api/v1/users/${userStorage.id}/invite`, requestOptions)
+          fetch(`https://matter-app.herokuapp.com/api/v1/users/${userStorage.id}/invite`, requestOptions)
             .then(response => response.text())
             .then(result => {
                             console.log(result);
@@ -81,7 +112,7 @@ export default class Feedback {
 	}
 	GetNotificade(id) {
 		console.log(id)
-		const requestUrl = `http://matter-app.herokuapp.com/api/v1/users/${id}/feedback-invitations`;
+		const requestUrl = `https://matter-app.herokuapp.com/api/v1/users/${id}/feedback-invitations`;
 		const requestOptions = {
 			method: "GET",
 			headers: {
@@ -293,7 +324,7 @@ export default class Feedback {
     }
     printFeedbackEvaluated(data) {
 
-        // this.cleanHtml()
+        this.cleanHtml()
         const cardFeedback2 = document.getElementById('feedback2')
         cardFeedback2.classList.remove('card')
         cardFeedback2.classList.toggle('card')
@@ -304,38 +335,67 @@ export default class Feedback {
         data.forEach((d) => {
             const skills = d.skills
             if(skills.length) {
-                // const invitedFeedback = this.getUser(d.user_invited_id)
-                // const invitedFeedback = this.nameUser
-                // console.log(invitedFeedback)
-                cardFeedback.innerHTML += `<h5 class="card-title">${d.user_invited_id}</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Skills</h6>`
-                skills.forEach((skill) => {
+
+                const requestUrl = `https://matter-app.herokuapp.com/api/v1/users/${d.user_invited_id}`;
+                const requestInfo = {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+                }
+                fetch(requestUrl, requestInfo)
+                .then(response => response.json())
+                .then(data => {
+                    cardFeedback.innerHTML += `<h5 class="card-title">${data.name}</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted">Skills</h6>`
+                    skills.forEach((skill) => {
                     const score = skill.pivot
                     console.log(`${skill.name} = ${score.score}`)
                     cardFeedback.innerHTML += `<span class="mr-5">${skill.name}: ${score.score}</span>`
                 })
+                })
+
+                
             }
         })
     }
     // getUser(userId) {
+    //     let status
     //     const requestUrl = `https://matter-app.herokuapp.com/api/v1/users/${userId}`;
     //     const requestInfo = {
     //     method: 'GET',
     //     headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
     //     }
     //     fetch(requestUrl, requestInfo)
-    //     .then(response => response.json())
+    //     .then(response => {
+    //         status = response.status
+    //         return response.json()
+    //     })
     //     .then(data => {
-    //         name = data.name
+    //         this.nameUser = data.name
+    //         // console.log(this.nameUser)
+    //     })
+    //     // setTimeout(() => {
+    //     //     console.log(this.nameUser)
+    //     // },5000)
+    //     promiseNameUser = new Promise((result, reject) => {
+    //         result(`hola ${this.nameUser}`)
+    //         reject(console.log('error'))
+    //     })
+    //     promiseNameUser
+    //     .then((data) => {
+    //         console.log(data)
+    //     })
+    //     .catch((error) => {
+    //         console.log(error)
     //     })
     // }
-    // cleanHtml() {
-    //     const containerPassword = document.getElementById('row-form-password') 
-    //     // containerPassword.innerHTML = ''
-    //     containerPassword.classList.toggle('d-none')
-    //     const cardFeedback = document.getElementById('feedback')
-    //     cardFeedback.innerHTML = ''
-    //     const cardFeedback2 = document.getElementById('feedback2')
-    //     cardFeedback2.classList.remove('card')
-    // }
+    cleanHtml() {
+        const bodyHome = document.getElementById('body-home')
+        bodyHome.innerHTML = ''
+        const cardFeedback = document.getElementById('feedback')
+        cardFeedback.innerHTML = ''
+        const cardFeedback2 = document.getElementById('feedback2')
+        cardFeedback2.classList.remove('card')
+        const hidePassword = document.getElementById('profile-row')
+        hidePassword.style.display = 'none'
+    }
 }

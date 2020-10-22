@@ -1,3 +1,4 @@
+import Feedback from './Feedback.js'
 export default class User {
     constructor(id, name, email) {
         this.id = id
@@ -44,7 +45,7 @@ export default class User {
             body: JSON.stringify(urlencoded),
             redirect: 'follow'
             };  
-            fetch(`http://matter-app.herokuapp.com/api/v1/users/${user.id}`, requestOptions)
+            fetch(`https://matter-app.herokuapp.com/api/v1/users/${user.id}`, requestOptions)
             .then(response => response.text())
             .then(result => {console.log(result)
                             localStorage.clear()
@@ -64,12 +65,12 @@ export default class User {
     mostrarMenuCambiarContraseña(){
 
         let menu = document.getElementById('body-home');
-        menu.innerHTML = ''
-        let menuFeed = document.getElementById('row-form-invite-feedback');
         const usersFromStorage = localStorage.getItem('user');
         const user = JSON.parse(usersFromStorage);
         
         document.getElementById('change-password').addEventListener('click', () =>{
+            const feedback = new Feedback
+            feedback.cleanHtml()
             menu.innerHTML = `<div class="container mt-5" id="container-change-password">
                                     <div class="row text-center row-form-password" id="row-form-password">
                                         <div class="col-md-12">
