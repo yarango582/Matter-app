@@ -27,7 +27,11 @@ export default class Peers {
         const Container = document.getElementById("body-home")
         let contador = 1;
         Container.innerHTML=
-        `<h1>Lista de correos que has enviado invitación</h1>`
+        `
+        <div class=container-list>
+        <h2>Lista de correos que has enviado invitación</h2>
+        </div>
+        `
         let identi
         data.forEach(element => {
             identi=element.id;
@@ -40,9 +44,20 @@ export default class Peers {
         .then(response => response.json())
         .then(data => {
             Container.innerHTML += 
-            `<div class=container-list>
-                <h4>${contador}.- Enviado al correo: ${data.email}</h4>
-            </div>`
+            `
+            <table class="table container-list">
+                <tbody>
+                    <tr>
+                        <th scope="row">${contador}</th>
+                        <td>${data.email}</td>
+                        <td>${data.name}</td>
+                    </tr>
+                </tbody>
+            </table>
+            `
+            // <div class=container-list>
+            //     <h4>${contador}.- Enviado al correo: ${data.email}</h4>
+            // </div>
             contador ++;
         })
         });
