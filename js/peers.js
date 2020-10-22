@@ -29,7 +29,7 @@ export default class Peers {
         Container.innerHTML=
         `
         <div class=container-list>
-        <h2>Lista de correos que has enviado invitación</h2>
+        <h2 id="title-lista">Lista de correos que has enviado invitación</h2>
         </div>
         `
         let identi
