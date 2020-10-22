@@ -35,6 +35,7 @@ if (window.location.pathname === "/index.html" || window.location.pathname === '
 		const ui = new UI;
 		ui.mostrarMenuProfile(); //controlador de vistas
 		ui.mostrarMenuCambiarContraseña(); //controlador de vistas
+
 		document.getElementById('logout').addEventListener('click', (go) =>{ //evento para ancla
 			authenticatedIndex.finalizarSesion() //Re-utilizamos la clase agregando nuevos metos
 			window.location.reload(); //recargamos para finalizar sesion
@@ -44,6 +45,7 @@ if (window.location.pathname === "/index.html" || window.location.pathname === '
 			event.preventDefault();
 			const changePassword = new newPassword;
 			changePassword.newPassword();
+			
 		})
 
 		document.getElementById('form-invite-feedback').addEventListener('submit', (event) =>{ 
