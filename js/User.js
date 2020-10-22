@@ -71,7 +71,9 @@ export default class User {
         document.getElementById('change-password').addEventListener('click', () =>{
             const feedback = new Feedback
             feedback.cleanHtml()
-            menu.innerHTML = `<div class="container mt-5" id="container-change-password">
+            const activeIconProfile = document.getElementById('icon-profile')
+            activeIconProfile.classList.toggle('active')
+            menu.innerHTML = `<div class="container" id="container-change-password">
                                     <div class="row text-center row-form-password" id="row-form-password">
                                         <div class="col-md-12">
                                             <div class="card">

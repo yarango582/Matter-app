@@ -8,6 +8,10 @@ export default class Feedback {
     }
 
     containerInviteUsers() {
+        const activeHome = document.getElementById('home')
+        activeHome.classList.toggle('active')
+        const activeIconHome = document.getElementById('icon-home')
+        activeIconHome.classList.toggle('active')
         const container = document.getElementById('feedback')
         container.innerHTML = `<div class="container mt-5" id="container-invite-feedback">
                                     <div class="row text-center row-form-invite-feedback" id="row-form-invite-feedback">
@@ -29,7 +33,6 @@ export default class Feedback {
                                         </div>
                                     </div>
                                 </div>`
-        console.log(container)
 
         document.getElementById('form-invite-feedback').addEventListener('submit', (event) =>{ 
             //evento para ancla
@@ -62,10 +65,10 @@ export default class Feedback {
     // Notificaciones 
 
 	bodyDiv() {
-        const cleanHtml = document.getElementById("feedback")
-        cleanHtml.innerHTML = ''
+        this.cleanHtml()
+        const activeIconNotificade = document.getElementById('icon-notificade')
+        activeIconNotificade.classList.toggle('active')
         const ContainerMain = document.getElementById("body-home");
-        ContainerMain.innerHTML = ``
         ContainerMain.innerHTML += `
     <div id="feedback" class="container mt-6">
         <div class="row">
@@ -272,18 +275,27 @@ export default class Feedback {
         // const cardFeedback = document.getElementById('feedback')
         // cardFeedback.innerHTML = ''
         this.cleanHtml()
+        const activeAdvisors = document.getElementById('advisors')
+        activeAdvisors.classList.toggle('active')
+        const activeIconAdvisors = document.getElementById('icon-advisors')
+        activeIconAdvisors.classList.toggle('active')
         const Container = document.getElementById("feedback")
         Container.innerHTML = ''
         let contador = 1;
         Container.innerHTML=
         `
-        <div class=container-list>
         <h2 id="title-lista">Lista de correos que has enviado invitación</h2>
-        </div>
         `
+        const classAdvisor = document.getElementById('feedback')
+        classAdvisor.classList.toggle('card')
         let identi
-        data.forEach(element => {
-            identi=element.user_invited_id;
+        const dataId = data.map((d) => d.user_invited_id)
+        const dataSet = new Set()
+        dataId.forEach((id) => {
+            dataSet.add(id)
+        })
+        dataSet.forEach(id => {
+            identi= id;
             const requestUrl = `https://matter-app.herokuapp.com/api/v1/users/${identi}`;
             const requestInfo = {
             method: 'GET',
@@ -292,18 +304,17 @@ export default class Feedback {
             fetch(requestUrl, requestInfo)
             .then(response => response.json())
             .then(data => {
-                Container.innerHTML += 
-                `
-                <table class="table container-list">
-                    <tbody>
-                        <tr>
-                            <th scope="row">${contador}</th>
-                            <td>${data.email}</td>
-                            <td>${data.name}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                `
+                    Container.innerHTML += `
+                            <table class="table container-list">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">${contador}</th>
+                                        <td>${data.email}</td>
+                                        <td>${data.name}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            `
                 contador ++;
         })
         });
@@ -325,6 +336,10 @@ export default class Feedback {
     printFeedbackEvaluated(data) {
 
         this.cleanHtml()
+        const activeSkills = document.getElementById('skills')
+        activeSkills.classList.toggle('active')
+        const activeIconSkills = document.getElementById('icon-skills')
+        activeIconSkills.classList.toggle('active')
         const cardFeedback2 = document.getElementById('feedback2')
         cardFeedback2.classList.remove('card')
         cardFeedback2.classList.toggle('card')
@@ -348,7 +363,6 @@ export default class Feedback {
                                                 <h6 class="card-subtitle mb-2 text-muted">Skills</h6>`
                     skills.forEach((skill) => {
                     const score = skill.pivot
-                    console.log(`${skill.name} = ${score.score}`)
                     cardFeedback.innerHTML += `<span class="mr-5">${skill.name}: ${score.score}</span>`
                 })
                 })
@@ -357,38 +371,28 @@ export default class Feedback {
             }
         })
     }
-    // getUser(userId) {
-    //     let status
-    //     const requestUrl = `https://matter-app.herokuapp.com/api/v1/users/${userId}`;
-    //     const requestInfo = {
-    //     method: 'GET',
-    //     headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-    //     }
-    //     fetch(requestUrl, requestInfo)
-    //     .then(response => {
-    //         status = response.status
-    //         return response.json()
-    //     })
-    //     .then(data => {
-    //         this.nameUser = data.name
-    //         // console.log(this.nameUser)
-    //     })
-    //     // setTimeout(() => {
-    //     //     console.log(this.nameUser)
-    //     // },5000)
-    //     promiseNameUser = new Promise((result, reject) => {
-    //         result(`hola ${this.nameUser}`)
-    //         reject(console.log('error'))
-    //     })
-    //     promiseNameUser
-    //     .then((data) => {
-    //         console.log(data)
-    //     })
-    //     .catch((error) => {
-    //         console.log(error)
-    //     })
-    // }
+
     cleanHtml() {
+        const activeHome = document.getElementById('home')
+        activeHome.classList.remove('active')
+        const activeIconHome = document.getElementById('icon-home')
+        activeIconHome.classList.remove('active')
+        const activeAdvisors = document.getElementById('advisors')
+        activeAdvisors.classList.remove('active')
+        const activeIconAdvisors = document.getElementById('icon-advisors')
+        activeIconAdvisors.classList.remove('active')
+        const activeSkills = document.getElementById('skills')
+        activeSkills.classList.remove('active')
+        const activeIconSkills = document.getElementById('icon-skills')
+        activeIconSkills.classList.remove('active')
+        const activeIconNotificade = document.getElementById('icon-notificade')
+        activeIconNotificade.classList.remove('active')
+        const activeIconProfile = document.getElementById('icon-profile')
+        activeIconProfile.classList.remove('active')
+
+        const classAdvisor = document.getElementById('feedback')
+        classAdvisor.classList.remove('card')
+
         const bodyHome = document.getElementById('body-home')
         bodyHome.innerHTML = ''
         const cardFeedback = document.getElementById('feedback')

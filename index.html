@@ -9,7 +9,7 @@
     <title>Matter App Squad 8 y Felipe</title>
 
 </head>
-<body>
+<body class="img-url">
     <!-- Navbar principal -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light style-navbar d-flex justify-content-between">
         <!-- <a class="navbar-brand" href="./">
@@ -19,20 +19,20 @@
             <ul class="list-header">
               <li class="nav-item active style-links-navbar d-flex align-items-center mr-4">
                 <a class="nav-link-left ml-2 text-decoration-none position-relative d-flex" href="/">
-                    <h6 class="">Home</h6>
-                    <i class="fas fa-home position-absolute absolute-icon"></i>
+                    <h6 id="home">Home</h6>
+                    <i class="fas fa-home position-absolute absolute-icon" id="icon-home"></i>
                 </a>
               </li>
               <li class="nav-item style-links-navbar d-flex align-items-center mr-4 ml-4">
                 <a id="peers" class="nav-link-left position-relative text-decoration-none d-flex" href="#">
-                    <h6 class="">Advisors</h6>
-                    <i class="fas fa-user-friends position-absolute absolute-icon more-right"></i>
+                    <h6 id="advisors" class="">Advisors</h6>
+                    <i class="fas fa-user-friends position-absolute absolute-icon more-right" id="icon-advisors"></i>
                 </a>
               </li>
               <li class="nav-item style-links-navbar d-flex align-items-center ml-4">
                 <a id="feedback-evaluated" class="nav-link-left position-relative text-decoration-none d-flex" href="#">
-                    <h6 class="">Skills</h6>
-                    <i class="fas fa-star position-absolute absolute-icon icon-star"></i>
+                    <h6 id="skills" class="">Skills</h6>
+                    <i class="fas fa-star position-absolute absolute-icon icon-star" id="icon-skills"></i>
                 </a>
               </li>
             </ul>
@@ -41,12 +41,12 @@
             <ul class="list-header">
                 <li class="nav-item active style-links-navbar">
                     <a id="note" class="mr-3" href="#">
-                        <i class="fas fa-bell"></i>
+                        <i class="fas fa-bell" id="icon-notificade"></i>
                     </a>
                 </li>
                 <li class="nav-item active style-links-navbar">
                     <a id="button-profile" type="button" class="" href="#">
-                        <i class="fas fa-user-circle"></i>
+                        <i class="fas fa-user-circle" id="icon-profile"></i>
                     </a>
                 </li>
             </ul>
@@ -72,17 +72,17 @@
     <!-- Cambio de datos usuario -->
     
     <!-- Invitar para feedback -->
-    <main>
-        <div id="feedback2">
-            <section id="feedback">
-                
-            </section>
-        </div>
-        <!-- Contenido usar etiqueta main -->
-        <div id="body-home">
-            
-        </div>
-    </main>
+    <div class="row">
+        <main class="col-md-8">
+            <div class="container mt-5" id="feedback2">
+                <section id="feedback"></section>
+            </div>
+            <!-- Contenido usar etiqueta main -->
+            <div id="body-home"></div>
+        </main>
+    
+        <section class="col-md-4" id="section-information"></section>
+    </div>
     <!-- Pie de pagina -->
     <footer>
         <script type="module" src="./js/main.js"></script>
