@@ -29,7 +29,9 @@ export default class Feedback {
 	}
 
 	bodyDiv() {
-		const ContainerMain = document.getElementById("body-home");
+        const cleanHtml = document.getElementById("feedback")
+        cleanHtml.innerHTML = ''
+        const ContainerMain = document.getElementById("body-home");
         ContainerMain.innerHTML = ``
         ContainerMain.innerHTML += `
     <div id="feedback" class="container mt-6">
@@ -268,5 +270,10 @@ export default class Feedback {
                 contador ++;
         })
         });
+    }
+
+    // mis estadisticas de Feedback
+    getFeedbackEvaluated() {
+        
     }
 }

@@ -15,7 +15,7 @@ export default class Authenticated {
     }
 
     // Registro
-    getUsers() {
+    postUsers() {
         let getStatus
         var urlencoded = new User();
         const requestUrl = "https://matter-app.herokuapp.com/api/v1/users";
@@ -31,8 +31,7 @@ export default class Authenticated {
         })
         .then(() => {
             if(getStatus === 201) {
-                localStorage.setItem('users', JSON.stringify(urlencoded.addUser()))
-                location.replace('../index.html')
+                this.loginUsers()
             } else if(getStatus === 422) {
                 alert('Este usuario ya esta registrado')
             }

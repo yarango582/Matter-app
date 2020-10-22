@@ -25,7 +25,7 @@ if (window.location.pathname === "/views/register.html") {
 	document.getElementById("register").addEventListener("submit", (event) => {
 		event.preventDefault();
 
-		authenticated.getUsers();
+		authenticated.postUsers();
 	});
 }
 if (window.location.pathname === "/index.html" || window.location.pathname === '/') { //validamos ruta index
