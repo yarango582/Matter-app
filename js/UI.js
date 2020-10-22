@@ -1,3 +1,4 @@
+import User from './User.js';
 export default class UI {
 
     mostrarMenuProfile(){
@@ -34,6 +35,9 @@ export default class UI {
         
         if(menu != null){
             document.getElementById('change-password').addEventListener('click', (even) =>{
+                const user = new User;
+                let storageUser = user.obtainUser();
+                document.getElementById("name-user").value = storageUser.name;
 
                 switch (menu.style.display) {
                     case 'none':
