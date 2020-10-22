@@ -37,13 +37,13 @@ if (window.location.pathname === "/index.html" || window.location.pathname === '
 			authenticated.finalizarSesion() //Re-utilizamos la clase agregando nuevos metos
 			window.location.reload(); //recargamos para finalizar sesion
 		})
-		document.getElementById('form-change-password').addEventListener('submit', (event) =>{ 
-			//evento para ancla
-			event.preventDefault();
+		// document.getElementById('form-change-password').addEventListener('submit', (event) =>{ 
+		// 	//evento para ancla
+		// 	event.preventDefault();
 			
-			user.newPassword();
+		// 	user.newPassword();
 			
-		})
+		// })
 
 		document.getElementById('form-invite-feedback').addEventListener('submit', (event) =>{ 
 			//evento para ancla

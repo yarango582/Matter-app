@@ -293,7 +293,7 @@ export default class Feedback {
     }
     printFeedbackEvaluated(data) {
 
-        this.cleanHtml()
+        // this.cleanHtml()
         const cardFeedback2 = document.getElementById('feedback2')
         cardFeedback2.classList.remove('card')
         cardFeedback2.classList.toggle('card')
@@ -329,13 +329,13 @@ export default class Feedback {
     //         name = data.name
     //     })
     // }
-    cleanHtml() {
-        const containerPassword = document.getElementById('row-form-password') 
-        // containerPassword.innerHTML = ''
-        containerPassword.classList.toggle('d-none')
-        const cardFeedback = document.getElementById('feedback')
-        cardFeedback.innerHTML = ''
-        const cardFeedback2 = document.getElementById('feedback2')
-        cardFeedback2.classList.remove('card')
-    }
+    // cleanHtml() {
+    //     const containerPassword = document.getElementById('row-form-password') 
+    //     // containerPassword.innerHTML = ''
+    //     containerPassword.classList.toggle('d-none')
+    //     const cardFeedback = document.getElementById('feedback')
+    //     cardFeedback.innerHTML = ''
+    //     const cardFeedback2 = document.getElementById('feedback2')
+    //     cardFeedback2.classList.remove('card')
+    // }
 }
