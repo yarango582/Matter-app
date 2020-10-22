@@ -238,7 +238,11 @@ export default class Feedback {
     }   
 
     ObtenerUser(data) {
-        const Container = document.getElementById("body-home")
+        // const cardFeedback = document.getElementById('feedback')
+        // cardFeedback.innerHTML = ''
+        this.cleanHtml()
+        const Container = document.getElementById("feedback")
+        Container.innerHTML = ''
         let contador = 1;
         Container.innerHTML=
         `
@@ -288,10 +292,14 @@ export default class Feedback {
         .catch(error => console.log('error', error));
     }
     printFeedbackEvaluated(data) {
+
+        this.cleanHtml()
         const cardFeedback2 = document.getElementById('feedback2')
+        cardFeedback2.classList.remove('card')
         cardFeedback2.classList.toggle('card')
         const cardFeedback = document.getElementById('feedback')
         cardFeedback.innerHTML = ''
+        cardFeedback.classList.remove('card-body')
         cardFeedback.classList.toggle('card-body')
         data.forEach((d) => {
             const skills = d.skills
@@ -321,4 +329,13 @@ export default class Feedback {
     //         name = data.name
     //     })
     // }
+    cleanHtml() {
+        const containerPassword = document.getElementById('row-form-password') 
+        // containerPassword.innerHTML = ''
+        containerPassword.classList.remove('d-block')
+        const cardFeedback = document.getElementById('feedback')
+        cardFeedback.innerHTML = ''
+        const cardFeedback2 = document.getElementById('feedback2')
+        cardFeedback2.classList.remove('card')
+    }
 }
