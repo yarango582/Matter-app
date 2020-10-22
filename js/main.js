@@ -29,27 +29,18 @@ if (window.location.pathname === "/views/register.html") {
 	});
 }
 if (window.location.pathname === "/index.html" || window.location.pathname === '/') { //validamos ruta index
-		const ui = new UI;
-		ui.mostrarMenuProfile(); //controlador de vistas
-		user.mostrarMenuCambiarContraseña(); //controlador de vistas
+		
+	feedback.containerInviteUsers()
+	const ui = new UI;
+	ui.mostrarMenuProfile(); //controlador de vistas
+	user.mostrarMenuCambiarContraseña(); //controlador de vistas
 
-		document.getElementById('logout').addEventListener('click', (go) =>{ //evento para ancla
-			authenticated.finalizarSesion() //Re-utilizamos la clase agregando nuevos metos
-			window.location.reload(); //recargamos para finalizar sesion
-		})
-		document.getElementById('form-change-password').addEventListener('submit', (event) =>{ 
-			//evento para ancla
-			event.preventDefault();
-			
-			user.newPassword();
-			
-		})
+	document.getElementById('logout').addEventListener('click', (go) =>{ //evento para ancla
+		authenticated.finalizarSesion() //Re-utilizamos la clase agregando nuevos metos
+		window.location.reload(); //recargamos para finalizar sesion
+	})
 
-		document.getElementById('form-invite-feedback').addEventListener('submit', (event) =>{ 
-			//evento para ancla
-			event.preventDefault();
-			feedback.inviteUsers();
-		})
+	
 }
 
 // notificade.GetNotificade();

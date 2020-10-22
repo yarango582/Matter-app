@@ -1,3 +1,4 @@
+import Feedback from './Feedback.js'
 export default class User {
     constructor(id, name, email) {
         this.id = id
@@ -44,7 +45,7 @@ export default class User {
             body: JSON.stringify(urlencoded),
             redirect: 'follow'
             };  
-            fetch(`http://matter-app.herokuapp.com/api/v1/users/${user.id}`, requestOptions)
+            fetch(`https://matter-app.herokuapp.com/api/v1/users/${user.id}`, requestOptions)
             .then(response => response.text())
             .then(result => {console.log(result)
                             localStorage.clear()
@@ -63,31 +64,49 @@ export default class User {
     }
     mostrarMenuCambiarContraseña(){
 
-        let menu = document.getElementById('row-form-password');
-        let menuFeed = document.getElementById('row-form-invite-feedback');
+        let menu = document.getElementById('body-home');
         const usersFromStorage = localStorage.getItem('user');
         const user = JSON.parse(usersFromStorage);
-        menu.style.display = 'none';
         
-        if(menu != null){
-            document.getElementById('change-password').addEventListener('click', (even) =>{
-                
-                document.getElementById("name-user").value = user.name;
+        document.getElementById('change-password').addEventListener('click', () =>{
+            const feedback = new Feedback
+            feedback.cleanHtml()
+            menu.innerHTML = `<div class="container mt-5" id="container-change-password">
+                                    <div class="row text-center row-form-password" id="row-form-password">
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-title mt-3">
+                                                    <h3>Modificar tus datos</h3>
+                                                </div>
+                                                <div class="card-body">
+                                                    <form action="/" id="form-change-password">
+                                                        <div class="form-group">
+                                                        <label for="name-user">Modifica tu nombre</label>
+                                                        <input type="text" class="form-control" id="name-user" placeholder="Nombre" value="${user.name}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                        <label for="password-1">Ingrese la contraseña</label>
+                                                        <input type="password" class="form-control" id="password-1" placeholder="*****">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="password-2">Confirme la contraseña</label>
+                                                            <input type="password" class="form-control" id="password-2" placeholder="*****">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`
 
-                switch (menu.style.display) {
-                    case 'none':
-                        menu.style.display = 'block';
-                        menuFeed.style.display = 'none';
-                        break;
-                    case 'block':
-                        menu.style.display = 'none';
-                        break;
-                    default:
-                        console.log('Error revisa el codigo');
-                        break;
-                }
+                document.getElementById(`form-change-password`).addEventListener("submit", (event) => {
+                    event.preventDefault();
+                    this.newPassword()
+                }); 
+            
             })     
-        }
+        
 
     }
 
