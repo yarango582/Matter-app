@@ -91,4 +91,13 @@ export default class User {
 
     }
 
+    obtainUser(){
+        const usersFromStorage = localStorage.getItem('user');
+        const user = JSON.parse(usersFromStorage);
+        // console.log(user)
+        return user;
+    }
+
+
+
 }

@@ -1,4 +1,4 @@
-import checkerUser from './User.js'
+import User from './User.js'
 export default class LoginUser {
     authenticated() {
         const loggedUser = localStorage.getItem('user');
@@ -13,7 +13,7 @@ export default class LoginUser {
         const dataPassword = document.getElementById('password').value;
         const urlencoded = {email: dataEmail,
                             password: dataPassword }
-        const user = new checkerUser();
+        const user = new User;
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},

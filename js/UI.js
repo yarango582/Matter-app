@@ -19,11 +19,7 @@ export default class UI {
                         console.log('Error revisa el codigo');
                         break;
                 }                
-            })
-                 
+            })     
         }
-        
     }
-
-
 }
