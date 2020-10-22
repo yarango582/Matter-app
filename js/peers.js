@@ -8,8 +8,7 @@ export default class Peers {
 
     first() {
         let obtener= JSON.parse(`${localStorage.getItem('user')}`);
-        let obtenerObjeto= JSON.parse(`${obtener}`)
-        this.ObtenerLista(obtenerObjeto.id)
+        this.ObtenerLista(obtener.id)
     }
 
     ObtenerLista(id) {
@@ -34,31 +33,31 @@ export default class Peers {
         `
         let identi
         data.forEach(element => {
-            identi=element.id;
+            identi=element.user_invited_id;
             const requestUrl = `https://matter-app.herokuapp.com/api/v1/users/${identi}`;
             const requestInfo = {
             method: 'GET',
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-        }
-        fetch(requestUrl, requestInfo)
-        .then(response => response.json())
-        .then(data => {
-            Container.innerHTML += 
-            `
-            <table class="table container-list">
-                <tbody>
-                    <tr>
-                        <th scope="row">${contador}</th>
-                        <td>${data.email}</td>
-                        <td>${data.name}</td>
-                    </tr>
-                </tbody>
-            </table>
-            `
-            // <div class=container-list>
-            //     <h4>${contador}.- Enviado al correo: ${data.email}</h4>
-            // </div>
-            contador ++;
+            }
+            fetch(requestUrl, requestInfo)
+            .then(response => response.json())
+            .then(data => {
+                Container.innerHTML += 
+                `
+                <table class="table container-list">
+                    <tbody>
+                        <tr>
+                            <th scope="row">${contador}</th>
+                            <td>${data.email}</td>
+                            <td>${data.name}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                `
+                // <div class=container-list>
+                //     <h4>${contador}.- Enviado al correo: ${data.email}</h4>
+                // </div>
+                contador ++;
         })
         });
     }

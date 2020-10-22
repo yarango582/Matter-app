@@ -20,8 +20,8 @@ export default class Notificades {
     </div>
             `;
 		let y = JSON.parse(`${localStorage.getItem("user")}`);
-		let z = JSON.parse(`${y}`);
-		this.GetNotificade(z.id);
+		// let z = JSON.parse(`${y}`);
+		this.GetNotificade(y.id);
 	}
 	NumberNotificade(x) {
 		const container = document.getElementById("notificade");
@@ -53,7 +53,8 @@ export default class Notificades {
     </button> `;
 	}
 	GetNotificade(id) {
-		const requestUrl = `http://matter-app.herokuapp.com/api/v1/users/${50}/feedback-invitations`;
+		console.log(id)
+		const requestUrl = `http://matter-app.herokuapp.com/api/v1/users/${id}/feedback-invitations`;
 		const requestOptions = {
 			method: "GET",
 			headers: {
@@ -111,13 +112,12 @@ export default class Notificades {
 		img.innerHTML = `<img src="" alt="${Name}" srcset="">`;
 		
     }
-	listNotificade(invitations) {
+	listNotificade(invitation) {
 		// this.idInvitation = invitations
 		// console.log(this.idInvitation)
 		const header = document.getElementById("header-notificade");
 		header.innerHTML = "Awaiting Feedback";
 		const notificade = document.getElementById("cont-notificade");
-		invitations.forEach((invitation) => {
 			notificade.innerHTML += `
         <div class="row">
         <div id="img${invitation.user_id}"class="col-md-3">
@@ -134,22 +134,32 @@ export default class Notificades {
         </div>
 		`;
 
-		// this.GetName(invitation.user_id)
+		this.GetName(invitation.user_id)
 		
-		});
 
-		invitations.forEach((invitation) => {
 			document.getElementById(`start ${invitation.id}`).addEventListener("click", (event) => {
 				event.preventDefault();
 				const feedback = new Feedback();
 				feedback.getFeedback(invitation.id);
 			});
-		})
 	}
 	printiNotificade(invitations) {
-		if (invitations.length) {
-			this.bodyNotificade();
-			this.listNotificade(invitations);
+		let contador = 0
+		if(invitations.length) {
+			invitations.forEach((invitation) => {
+				if(invitation.evaluated_skills != 3) {
+					console.log(invitation)
+					this.bodyNotificade();
+					this.listNotificade(invitation);
+					contador++
+				}
+			})
+			if(contador === 0) {
+				this.bodyNotificade();
+				this.listnone();
+			}
+			
+			
 			// document.getElementById("start").addEventListener("click", (event) => {
 			// 	event.preventDefault();
 			// 	const feedback = new Feedback();

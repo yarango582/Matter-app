@@ -37,6 +37,8 @@ export default class UI {
             document.getElementById('change-password').addEventListener('click', (even) =>{
                 const user = new User;
                 let storageUser = user.obtainUser();
+                // storageUser = JSON.parse(storageUser);
+                console.log(storageUser)
                 document.getElementById("name-user").value = storageUser.name;
 
                 switch (menu.style.display) {
