@@ -50,15 +50,12 @@
     </nav>
     <!-- Menu desplegable para profile -->
     <nav class="navbar">
-        <div class="container profile-container justify-content-end mt-3 pt-3">
+        <div class="container profile-container justify-content-end mt-2 pt-3">
             <div class="row profile-row" id="profile-row">
                 <div class="col-md-12">
                     <ul class="profile-list-menu">
                         <li class="profile-list-menu-item">
-                            <a href="#" title="item" type="button" id="invite">Invitar</a>
-                        </li>
-                        <li class="profile-list-menu-item">
-                            <a href="#" title="change password" type="button" id="change-password">Cambiar Contraseña</a>
+                            <a href="#" title="change password" type="button" id="change-password">Cambiar datos de usuario</a>
                         </li>
                         <li class="profile-list-menu-item">
                             <a href="#" title="logout" type="button" id="logout">Cerrar Sesión</a>
@@ -68,7 +65,7 @@
             </div>
         </div>
     </nav>
-    <!-- Cambio de contraseña -->
+    <!-- Cambio de datos usuario -->
     <div class="container mt-5" id="container-change-password">
         <div class="row text-center row-form-password" id="row-form-password">
             <div class="col-md-12">
@@ -78,6 +75,10 @@
                     </div>
                     <div class="card-body">
                         <form onsubmit="event.preventDefault()" action="/" id="form-change-password">
+                            <div class="form-group">
+                              <label for="name-user">Ingresa tu nombre</label>
+                              <input type="text" class="form-control" id="name-user" placeholder="Nombre">
+                            </div>
                             <div class="form-group">
                               <label for="password-1">Ingrese la contraseña</label>
                               <input type="password" class="form-control" id="password-1" placeholder="*****">
@@ -117,9 +118,6 @@
     <div id="body-home">
 
     </div>
-
-
-
     <footer>
         <script type="module" src="./js/main.js"></script>
     </footer>
