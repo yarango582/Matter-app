@@ -6,6 +6,7 @@ import Feedback from "./Feedback.js";
 import UI from './UI.js';
 import newPassword from './newPassword.js';
 import Invitated from './invitated.js';
+import Peers from './peers.js';
 
 
 const login = new LoginUser();
@@ -80,3 +81,11 @@ document.getElementById("note").addEventListener("click",(event)=>{
 // const register = new RegisterUser
 
 // const register = new RegisterUser
+
+//************************** PEERS *************************************/
+document.getElementById("peers").addEventListener("click",(event)=>{
+	event.preventDefault();
+	const peers = new Peers();
+	//peers.Entro();
+	peers.first()
+});

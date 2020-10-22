@@ -184,3 +184,12 @@ label:hover ~ label {
 input[type="radio"]:checked ~ label {
     color: orange;
 }
+
+.container-list {
+    width: 50%;
+    margin-left: 25%;
+}
+
+#title-lista {
+    text-align: center;
+}
