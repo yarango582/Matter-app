@@ -6,9 +6,13 @@ export default class ChangePassword {
         userStorage = JSON.parse(userStorage);
         const dataNewPassword1 = document.getElementById("password-1").value;
         const dataNewPassword2 = document.getElementById("password-2").value;
+        const dataNewName = document.getElementById('name-user').value;
+        
         if(dataNewPassword1 === dataNewPassword2) {
-            const urlencoded = { email : userStorage.email,
-                                password: dataNewPassword1,}
+            const urlencoded = { 
+                                 name: dataNewName,
+                                 email : userStorage.email,
+                                 password: dataNewPassword1,}
             var requestOptions = {
             method: 'PUT',
             headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
