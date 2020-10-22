@@ -332,7 +332,7 @@ export default class Feedback {
     cleanHtml() {
         const containerPassword = document.getElementById('row-form-password') 
         // containerPassword.innerHTML = ''
-        containerPassword.classList.remove('d-block')
+        containerPassword.classList.toggle('d-none')
         const cardFeedback = document.getElementById('feedback')
         cardFeedback.innerHTML = ''
         const cardFeedback2 = document.getElementById('feedback2')
