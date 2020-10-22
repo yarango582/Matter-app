@@ -1,4 +1,3 @@
-import User from './User.js';
 export default class UI {
 
     mostrarMenuProfile(){
@@ -20,43 +19,7 @@ export default class UI {
                         console.log('Error revisa el codigo');
                         break;
                 }                
-            })
-                 
-        }
-        
-    }
-
-    mostrarMenuCambiarContraseña(){
-
-        let menu = document.getElementById('row-form-password');
-        let menuFeed = document.getElementById('row-form-invite-feedback');
-
-        menu.style.display = 'none';
-        
-        if(menu != null){
-            document.getElementById('change-password').addEventListener('click', (even) =>{
-                const user = new User;
-                let storageUser = user.obtainUser();
-                // storageUser = JSON.parse(storageUser);
-                console.log(storageUser)
-                document.getElementById("name-user").value = storageUser.name;
-
-                switch (menu.style.display) {
-                    case 'none':
-                        menu.style.display = 'block';
-                        menuFeed.style.display = 'none';
-                        break;
-                    case 'block':
-                        menu.style.display = 'none';
-                        break;
-                    default:
-                        console.log('Error revisa el codigo');
-                        break;
-                }
             })     
         }
-
     }
-
-
 }

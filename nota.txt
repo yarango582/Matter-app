@@ -1,3 +1,0 @@
-
-1. Agregar menu desplegable de opciones de perfil
-2. Modificar password y nombre

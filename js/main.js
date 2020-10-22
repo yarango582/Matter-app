@@ -1,26 +1,23 @@
-import LoginUser from "./login.js";
-import RegisterUser from "./register.js";
+import User from './User.js'
 import Authenticated from "./authenticated.js";
-import Notificades from "./notificade.js";
-import Feedback from "./Feedback.js";
 import UI from './UI.js';
-import newPassword from './newPassword.js';
-import Invitated from './invitated.js';
-import Peers from './peers.js';
+import Feedback from './feedback.js'
 
 
-const login = new LoginUser();
-login.authenticated();
+const user = new User;
+const feedback = new Feedback;
+const authenticated = new Authenticated();
 
-const authenticatedIndex = new Authenticated();
-authenticatedIndex.verificarLogin();
+
+authenticated.authenticated();
+authenticated.verificarLogin();
 
 
 if (window.location.pathname === "/views/login.html") {
 	document.getElementById("login").addEventListener("submit", (event) => {
 		event.preventDefault();
 
-        login.loginUsers()
+        authenticated.loginUsers()
     })
 }
 
@@ -28,32 +25,30 @@ if (window.location.pathname === "/views/register.html") {
 	document.getElementById("register").addEventListener("submit", (event) => {
 		event.preventDefault();
 
-		const register = new RegisterUser();
-		register.getUsers();
+		authenticated.postUsers();
 	});
 }
 if (window.location.pathname === "/index.html" || window.location.pathname === '/') { //validamos ruta index
 		const ui = new UI;
 		ui.mostrarMenuProfile(); //controlador de vistas
-		ui.mostrarMenuCambiarContraseña(); //controlador de vistas
+		user.mostrarMenuCambiarContraseña(); //controlador de vistas
 
 		document.getElementById('logout').addEventListener('click', (go) =>{ //evento para ancla
-			authenticatedIndex.finalizarSesion() //Re-utilizamos la clase agregando nuevos metos
+			authenticated.finalizarSesion() //Re-utilizamos la clase agregando nuevos metos
 			window.location.reload(); //recargamos para finalizar sesion
 		})
 		document.getElementById('form-change-password').addEventListener('submit', (event) =>{ 
 			//evento para ancla
 			event.preventDefault();
-			const changePassword = new newPassword;
-			changePassword.newPassword();
+			
+			user.newPassword();
 			
 		})
 
 		document.getElementById('form-invite-feedback').addEventListener('submit', (event) =>{ 
 			//evento para ancla
 			event.preventDefault();
-			const invited = new Invitated;
-			invited.inviteUsers();
+			feedback.inviteUsers();
 		})
 }
 
@@ -69,24 +64,16 @@ if (window.location.pathname === "/index.html" || window.location.pathname === '
 //notificade
 document.getElementById("note").addEventListener("click",(event)=>{
 	event.preventDefault();
-	const notificade = new Notificades();
-	notificade.bodyDiv();
+	feedback.bodyDiv();
 });
-
-
-// if(window.location.pathname === '/index.html') {
-//     const invitated = new Invitated;
-//     invitated.inviteUsers();
-// }
-
-// const register = new RegisterUser
-
-// const register = new RegisterUser
 
 //************************** PEERS *************************************/
 document.getElementById("peers").addEventListener("click",(event)=>{
 	event.preventDefault();
-	const peers = new Peers();
-	//peers.Entro();
-	peers.first()
+	feedback.first()
 });
+
+// obtener calificacion de feebacks
+document.getElementById('feedback-evaluated').addEventListener('click', () => {
+	feedback.getFeedbackEvaluated()
+})
