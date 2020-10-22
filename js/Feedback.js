@@ -14,7 +14,7 @@ export default class Feedback {
 
 class PrintFeedback{
     printiFeedback(skills){
-        const ContainerMain = document.getElementById("content-main");
+        const ContainerMain = document.getElementById("feedback");
         ContainerMain.innerHTML = "";
         console.log(skills[0].name)
         skills.forEach((skill) => {
@@ -28,9 +28,22 @@ class PrintFeedback{
                         <div class="col-md">
                         <blockquote class="blockquote mb-0">
                             <span color="black" font-size="inherit" font-weight="400" >${skill.name}</span>
-                            <p>would like to hear your feedback.</p>
                             </blockquote>
                         </div>
+                        <form name="${skill.id}" id="${skill.id}" action="" method="POST">
+                            <p class="clasificacion">
+                                <input id="radio1-${skill.id}" type="radio" name="${skill.id}" value="5">
+                                <label for="radio1-${skill.id}">★</label>
+                                <input id="radio2-${skill.id}" type="radio" name="${skill.id}" value="4">
+                                <label for="radio2-${skill.id}">★</label>
+                                <input id="radio3-${skill.id}" type="radio" name="${skill.id}" value="3">
+                                <label for="radio3-${skill.id}">★</label>
+                                <input id="radio4-${skill.id}" type="radio" name="${skill.id}" value="2">
+                                <label for="radio4-${skill.id}">★</label>
+                                <input id="radio5-${skill.id}" type="radio" name="${skill.id}" value="1">
+                                <label for="radio5-${skill.id}">★</label>
+                            </p>
+                        </form>
                         <div class="col-md-2">
                             <div class="btn-group-vertical" role="group" aria-label="Basic example">
                             </div>
@@ -39,8 +52,9 @@ class PrintFeedback{
                 </div>
             </div>
         `;
-        
         });
-        
+        const button = document.getElementById("feedback");
+		//button.innerHTML = ``;
+		button.innerHTML += `<button class="btn btn-primary button" onclick="">enviar</button>`;
     }
 }

@@ -1,5 +1,4 @@
-
-class UI {
+export default class UI {
 
     mostrarMenuProfile(){
 
@@ -83,5 +82,3 @@ class UI {
     }
 
 }
-
-export default UI;

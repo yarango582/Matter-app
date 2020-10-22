@@ -1,21 +1,28 @@
+import Feedback from "./Feedback.js";
 export default class Notificades {
-    GetNotificade(id){
-        const printi = new PrintNotificade()
-        //const requestUrl = `https://matter-app.herokuapp.com/api/v1/users/${id}/invitations`;
-        //const requestOptions = {
-        //    method: 'GET',
-        //    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-        //}
-        //fetch(requestUrl, requestOptions)
-        //.then(response => response.json())
-        //.then(data => printi.printiNotificade(data));
-        printi.printiNotificade(id)
+    bodyDiv(){
+        const ContainerMain = document.getElementById("body-home");
+        // const get=new GetNotificades()
+        //ContainerMain.innerHTML = "";
+        ContainerMain.innerHTML += `
+    <div class="container mt-6">
+        <div id="feedback" class="row">
+            <div id="left" class="col-md-7">
+            </div>
+            <div id="" class="col-md-4">
+            </div>
+        </div>
+    </div>
+            `;
+            let y= JSON.parse(`${localStorage.getItem('user')}`);
+            let z= JSON.parse(`${y}`)
+            console.log(z)
+        GetNotificade(z.id)
     }
     NumberNotificade(x) {
 		const container = document.getElementById("notificade");
 		container.innerHTML += `
-    <a href="#" title="Placeholder link title" class="text-decoration-none">
-
+    <button class="btn btn-primary" id="" type="submit">
     <svg
     width="1.5em"
     height="1.5em"
@@ -37,15 +44,41 @@ export default class Notificades {
     <span>
     ${x}
     </span>
-    </a>
-    </div> `;
+    </div>
+    </button> `;
+    }
+
+    GetNotificade(id){
+        const printi = new PrintNotificade()
+        const requestUrl = `http://matter-app.herokuapp.com/api/v1/users/${id}/feedback-invitations`;
+        const requestOptions = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        }
+        fetch(requestUrl, requestOptions)
+        .then(response => response.json())
+        .then(data => printi.printiNotificade(data));
+    }
+    GetName(id){
+        const name=new Info()
+        const requestUrl = `https://matter-app.herokuapp.com/api/v1/users/${id}`;
+        const requestOptions = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        }
+        fetch(requestUrl, requestOptions)
+        .then(response => response.json())
+        .then(data => name.PrintName(data.name));
     }
 }
+// class GetNotificades{
+    
+// }
 class BodyNotificades{
     bodyNotificade(){
-        const ContainerMain = document.getElementById("container-center");
-        ContainerMain.innerHTML = "";
-        ContainerMain.innerHTML = `
+        const ContainerMain = document.getElementById("left");
+        //ContainerMain.innerHTML = "";
+        ContainerMain.innerHTML += `
         <div class="card">
         <div id="header-notificade" class="card-header">
             
@@ -53,12 +86,26 @@ class BodyNotificades{
             <div id="cont-notificade" class="card-body">
             </div>
             </div>
-            </div>
             `;
+    }
+}
+class Info{
+    PrintDate(x){
+        let y=""
+        for (let i = 0; i < 10; i++) {
+            y+=x[i]
+        }
+        y+="</br> hrs:"
+        for (let i = 11; i < 19; i++) {
+            y+=x[i]
+        }
+        return y
     }
 }
 class ListNotificade{
     listNotificade(invitations){
+        const date=new Info();
+        const name=new GetNotificades
         const header=document.getElementById("header-notificade")
             header.innerHTML="Awaiting Feedback"
         const notificade=document.getElementById("cont-notificade")
@@ -66,13 +113,13 @@ class ListNotificade{
             notificade.innerHTML+=`
         <div class="row">
         <div class="col-md-3">
-        <img src="" alt="" srcset="${invitation.name}">
+        <img src="" alt="" srcset="${name.GetName(invitation.user_id)}">
         </div>
         <div class="col-md">
         <blockquote class="blockquote mb-0">
-            <span color="black" font-size="inherit" font-weight="400" >${invitation.name}</span>
-            <p>would like to hear your feedback.</p>
-            </blockquote>
+            <span color="black" font-size="inherit" font-weight="400" >${name.GetName(invitation.user_id)}</span>
+            <p>would like to hear your feedback.</br>${date.PrintDate(invitation.created_at)} </p>
+        </blockquote>
         </div>
         <div class="col-md-2">
             <div class="btn-group-vertical" role="group" aria-label="Basic example">
@@ -102,12 +149,20 @@ class ListNotificade{
 }
 class PrintNotificade{
     printiNotificade(invitations) {
-
         const body=new BodyNotificades()
         const list=new ListNotificade()
-        if (invitations) {
+        if (invitations.length) {
             body.bodyNotificade()
             list.listNotificade(invitations)
+            document.getElementById("start").addEventListener("click", (event) => {
+                event.preventDefault();
+                const feedback = new Feedback();
+                feedback.getFeedback();
+            });
+            document.getElementById("decline").addEventListener("click", (event) => {
+                event.preventDefault();
+                storage.removeItem(keyName);
+            });
         } else {
             body.bodyNotificade()
             list.listnone()

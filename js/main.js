@@ -1,4 +1,3 @@
-import verificarLogin from "./authenticated.js";
 import LoginUser from "./login.js";
 import RegisterUser from "./register.js";
 import Authenticated from "./authenticated.js";
@@ -32,8 +31,7 @@ if (window.location.pathname === "/views/register.html") {
 		register.getUsers();
 	});
 }
-
-if (window.location.pathname === "/index.html") { //validamos ruta index
+if (window.location.pathname === "/index.html" || window.location.pathname === '/') { //validamos ruta index
 		const ui = new UI;
 		ui.mostrarMenuProfile(); //controlador de vistas
 		ui.mostrarMenuCambiarContraseña(); //controlador de vistas
@@ -66,9 +64,19 @@ if (window.location.pathname === "/index.html") { //validamos ruta index
 // 	storage.removeItem(keyName);
 // });
 
+//notificade
+document.getElementById("note").addEventListener("click",(event)=>{
+	event.preventDefault();
+	const notificade = new Notificades();
+	notificade.bodyDiv();
+});
+
+
 // if(window.location.pathname === '/index.html') {
 //     const invitated = new Invitated;
 //     invitated.inviteUsers();
 // }
+
+// const register = new RegisterUser
 
 // const register = new RegisterUser
