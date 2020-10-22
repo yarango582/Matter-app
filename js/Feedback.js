@@ -289,8 +289,13 @@ export default class Feedback {
         </div>
         `
         let identi
-        data.forEach(element => {
-            identi=element.user_invited_id;
+        const dataId = data.map((d) => d.user_invited_id)
+        const dataSet = new Set()
+        dataId.forEach((id) => {
+            dataSet.add(id)
+        })
+        dataSet.forEach(id => {
+            identi= id;
             const requestUrl = `https://matter-app.herokuapp.com/api/v1/users/${identi}`;
             const requestInfo = {
             method: 'GET',
@@ -299,18 +304,17 @@ export default class Feedback {
             fetch(requestUrl, requestInfo)
             .then(response => response.json())
             .then(data => {
-                Container.innerHTML += 
-                `
-                <table class="table container-list">
-                    <tbody>
-                        <tr>
-                            <th scope="row">${contador}</th>
-                            <td>${data.email}</td>
-                            <td>${data.name}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                `
+                    Container.innerHTML += `
+                            <table class="table container-list">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">${contador}</th>
+                                        <td>${data.email}</td>
+                                        <td>${data.name}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            `
                 contador ++;
         })
         });
@@ -367,7 +371,7 @@ export default class Feedback {
             }
         })
     }
-    
+
     cleanHtml() {
         const activeHome = document.getElementById('home')
         activeHome.classList.remove('active')

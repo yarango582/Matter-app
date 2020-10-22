@@ -32,6 +32,7 @@ if (window.location.pathname === "/index.html" || window.location.pathname === '
 		
 	feedback.containerInviteUsers()
 	const ui = new UI;
+	ui.informationUser()
 	ui.mostrarMenuProfile(); //controlador de vistas
 	user.mostrarMenuCambiarContraseña(); //controlador de vistas
 
