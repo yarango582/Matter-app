@@ -30,7 +30,7 @@
                 </a>
               </li>
               <li class="nav-item style-links-navbar d-flex align-items-center ml-4">
-                <a class="nav-link-left position-relative text-decoration-none d-flex" href="#">
+                <a id="feedback-evaluated" class="nav-link-left position-relative text-decoration-none d-flex" href="#">
                     <h6 class="">Skills</h6>
                     <i class="fas fa-star position-absolute absolute-icon icon-star"></i>
                 </a>
@@ -99,28 +99,30 @@
         </div>
     </div>
     <!-- Invitar para feedback -->
-    <section id="feedback">
-        <div class="container mt-5" id="container-invite-feedback">
-            <div class="row text-center row-form-invite-feedback" id="row-form-invite-feedback">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-title mt-3">
-                            <h3>Invita a que te den retroalimentación</h3>
-                        </div>
-                        <div class="card-body">
-                            <form onsubmit="event.preventDefault()" action="/" id="form-invite-feedback">
-                                <div class="form-group">
-                                    <label for="email-invite-feed"></label>
-                                    <input type="email" class="form-control" id="email-invite-feed" placeholder="@correo.com">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Invitar</button>
-                            </form>
+    <div id="feedback2">
+        <section id="feedback">
+            <div class="container mt-5" id="container-invite-feedback">
+                <div class="row text-center row-form-invite-feedback" id="row-form-invite-feedback">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-title mt-3">
+                                <h3>Invita a que te den retroalimentación</h3>
+                            </div>
+                            <div class="card-body">
+                                <form onsubmit="event.preventDefault()" action="/" id="form-invite-feedback">
+                                    <div class="form-group">
+                                        <label for="email-invite-feed"></label>
+                                        <input type="email" class="form-control" id="email-invite-feed" placeholder="@correo.com">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Invitar</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
     <!-- Contenido usar etiqueta main -->
     <div id="body-home">
         

@@ -1,6 +1,12 @@
 import obtainUser from './User.js'
 import Skills from "./evaluate-skills.js";
 export default class Feedback {
+
+    constructor(idInvitation, nameUser) {
+        this.idInvitation = idInvitation
+        this.nameUser = nameUser
+    }
+    
     inviteUsers() {
         const User = new obtainUser;
         let userStorage = User.obtainUser();
@@ -23,10 +29,6 @@ export default class Feedback {
     }
 
     // Notificaciones 
-
-    constructor(idInvitation) {
-		this.idInvitation = idInvitation
-	}
 
 	bodyDiv() {
         const cleanHtml = document.getElementById("feedback")
@@ -220,7 +222,7 @@ export default class Feedback {
 
     // A quien le hecho feedback notificacio
     first() {
-        let obtener= JSON.parse(`${localStorage.getItem('user')}`);
+        let obtener = JSON.parse(`${localStorage.getItem('user')}`);
         this.ObtenerLista(obtener.id)
     }
 
@@ -274,6 +276,49 @@ export default class Feedback {
 
     // mis estadisticas de Feedback
     getFeedbackEvaluated() {
-        
+        let getId = JSON.parse(localStorage.getItem('user'));
+        const requestUrl = `https://matter-app.herokuapp.com/api/v1/users/${getId.id}/invitations`;
+        const requestOptions = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        }
+        fetch(requestUrl, requestOptions)
+        .then( response => response.json())
+        .then(data => this.printFeedbackEvaluated(data))
+        .catch(error => console.log('error', error));
     }
+    printFeedbackEvaluated(data) {
+        const cardFeedback2 = document.getElementById('feedback2')
+        cardFeedback2.classList.toggle('card')
+        const cardFeedback = document.getElementById('feedback')
+        cardFeedback.innerHTML = ''
+        cardFeedback.classList.toggle('card-body')
+        data.forEach((d) => {
+            const skills = d.skills
+            if(skills.length) {
+                // const invitedFeedback = this.getUser(d.user_invited_id)
+                // const invitedFeedback = this.nameUser
+                // console.log(invitedFeedback)
+                cardFeedback.innerHTML += `<h5 class="card-title">${d.user_invited_id}</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">Skills</h6>`
+                skills.forEach((skill) => {
+                    const score = skill.pivot
+                    console.log(`${skill.name} = ${score.score}`)
+                    cardFeedback.innerHTML += `<span class="mr-5">${skill.name}: ${score.score}</span>`
+                })
+            }
+        })
+    }
+    // getUser(userId) {
+    //     const requestUrl = `https://matter-app.herokuapp.com/api/v1/users/${userId}`;
+    //     const requestInfo = {
+    //     method: 'GET',
+    //     headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    //     }
+    //     fetch(requestUrl, requestInfo)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         name = data.name
+    //     })
+    // }
 }

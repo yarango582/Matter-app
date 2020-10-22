@@ -72,3 +72,8 @@ document.getElementById("peers").addEventListener("click",(event)=>{
 	event.preventDefault();
 	feedback.first()
 });
+
+// obtener calificacion de feebacks
+document.getElementById('feedback-evaluated').addEventListener('click', () => {
+	feedback.getFeedbackEvaluated()
+})
