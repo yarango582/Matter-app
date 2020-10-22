@@ -2,7 +2,7 @@
 /****************CSS DE REGISTER/////////////////////////*/
 
 #body-register {
-    background-image: url("../imgs/fondo.jpg");
+    background-image: url("https://i.imgur.com/n6MpSsm.jpg");
     background-size: cover;
 }
 
@@ -13,7 +13,7 @@
     padding: 25px;
     color: black;
     border-radius: 10px;
-    margin-top: 15%;
+    margin-top: 6%;
     text-align: center;
 }
 .form-login{
@@ -29,7 +29,6 @@
 
 /****************CSS DE HOME/////////////////////////////////////////*/
 
-@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;400;500&display=swap');
 
 #body-home {
     margin: 0;
@@ -82,7 +81,8 @@
 }
 
 .fas {
-    color: rgb(85, 155, 255);
+    /* color: rgb(85, 155, 255); */
+    color: white;
 }
 
 
@@ -190,4 +190,34 @@
 
 #title-lista {
     text-align: center;
+}
+
+
+/* Style Mauricio */
+
+.img-url {
+    background-image: url("https://i.imgur.com/n6MpSsm.jpg");
+    background-size: cover;
+}
+.rounded-10px {
+    border-radius: 10px;
+}
+.width-30 {
+    width: 30%;
+}
+.absolute-icon {
+    right: 50px;
+    top: 0;
+}
+.more-right {
+    right: 68px;
+}
+.icon-star {
+    right: 42px;
+}
+.list-header {
+    display: flex;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
 }

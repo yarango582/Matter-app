@@ -141,7 +141,8 @@ export default class Notificades {
 				event.preventDefault();
 				const feedback = new Feedback();
 				feedback.getFeedback(invitation.id);
-			});
+            });
+            
 	}
 	printiNotificade(invitations) {
 		let contador = 0

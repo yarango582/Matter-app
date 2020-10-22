@@ -1,13 +1,16 @@
 import LoginUser from "./login.js";
 import RegisterUser from "./register.js";
+import User from './User.js'
 import Authenticated from "./authenticated.js";
 import Notificades from "./notificade.js";
 import Feedback from "./Feedback.js";
 import UI from './UI.js';
-import newPassword from './newPassword.js';
+// import newPassword from './newPassword.js';
 import Invitated from './invitated.js';
 import Peers from './peers.js';
 
+
+const user = new User;
 
 const login = new LoginUser();
 login.authenticated();
@@ -35,7 +38,7 @@ if (window.location.pathname === "/views/register.html") {
 if (window.location.pathname === "/index.html" || window.location.pathname === '/') { //validamos ruta index
 		const ui = new UI;
 		ui.mostrarMenuProfile(); //controlador de vistas
-		ui.mostrarMenuCambiarContraseña(); //controlador de vistas
+		user.mostrarMenuCambiarContraseña(); //controlador de vistas
 
 		document.getElementById('logout').addEventListener('click', (go) =>{ //evento para ancla
 			authenticatedIndex.finalizarSesion() //Re-utilizamos la clase agregando nuevos metos
@@ -44,8 +47,8 @@ if (window.location.pathname === "/index.html" || window.location.pathname === '
 		document.getElementById('form-change-password').addEventListener('submit', (event) =>{ 
 			//evento para ancla
 			event.preventDefault();
-			const changePassword = new newPassword;
-			changePassword.newPassword();
+			
+			user.newPassword();
 			
 		})
 
