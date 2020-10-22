@@ -284,10 +284,10 @@ export default class Feedback {
         let contador = 1;
         Container.innerHTML=
         `
-        <div class=container-list>
         <h2 id="title-lista">Lista de correos que has enviado invitación</h2>
-        </div>
         `
+        const classAdvisor = document.getElementById('feedback')
+        classAdvisor.classList.toggle('card')
         let identi
         const dataId = data.map((d) => d.user_invited_id)
         const dataSet = new Set()
@@ -390,6 +390,8 @@ export default class Feedback {
         const activeIconProfile = document.getElementById('icon-profile')
         activeIconProfile.classList.remove('active')
 
+        const classAdvisor = document.getElementById('feedback')
+        classAdvisor.classList.remove('card')
 
         const bodyHome = document.getElementById('body-home')
         bodyHome.innerHTML = ''
